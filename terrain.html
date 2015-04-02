@@ -173,7 +173,7 @@
 
 			"<script>" +
 
-			"	doc.style.cssText = 'font: bold 12pt monospace; margin: auto; max-width: 900px';" +
+			"	doc.style.cssText = 'font: bold 12pt monospace; margin: auto; max-width: 600px';" +
 
 			"	var xmlHttp;" +
 
@@ -221,9 +221,10 @@
 		}
 
 		var ifr = document.body.appendChild( document.createElement( 'iframe' ) );
-		ifr.width = window.innerWidth;
+		ifr.width = 800; // window.innerWidth;
 		ifr.height = window.innerHeight;
 		ifr.style.cssText = 'border-width: 0; position: absolute; z-index: -10';
+		ifr.style.cssText = 'border-width: 0; left: 0; margin: auto; position: absolute; right: 0; z-index: -10';
 		ifr.onload = callback || function() {};
 
 		return ifr;
