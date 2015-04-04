@@ -1,14 +1,30 @@
 Dev Notes
 ===
 
+
+2015-04-03 ~ Theo
+	* png-tms7-viewer-3d.html
+		* going very well / ready to show
+	* node-jimp-topo30-to-png-tms-7plus _et al_: all progessing well
+		* need to parse file names so as to create dirs
+		* need to be able to batch files
+ 
+Up next:
+
+	* png-1deg-viewer-3d
+	* identify 30/15/15/1 sec fles using file size
+
+2015-03-29 ~ Theo
+
+* terrain-srtm30-plus.html
+	* data, viewers & menus all moving along wonderfully well
+
+
 2015-03-26 ~ Theo
 
 * template-png-tms7-viewer-3d.html
 	* code clean-up
 	* Mostly fix altitudes
-
-
-
 
 2015-03-23 ~ Theo
 

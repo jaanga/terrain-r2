@@ -6,6 +6,7 @@
 &raquo; [GitHub source code]( https://github.com/jaanga/terrain-r2 "View files with GitHub" ) <scan style=display:none ><< You are here</scan>  
 
 [Read Me]( #readme.md# )  
+[Cookbook Read Me]( #./cookbook/readme.md# )  
 [Copyright & License]( #jaanga-copyright-and-mit-license.md# )  
 [Attributions & Thanks]( #thanks.md# )  
 
@@ -13,20 +14,19 @@
 
 [Jaanga Terrain SRTM30 Plus]( ../terrain-srtm30-plus-r2/terrain-srtm30-plus.html )
 
-SRTM data as enhanced by the Scripps Institute at UCSD. Includes open data and open source viewers.
+SRTM data as enhanced by the [Scripps Institution of Oceanography]( http://en.wikipedia.org/wiki/Scripps_Institution_of_Oceanography ) at [UCSD]( https://scripps.ucsd.edu/ ). Includes open data and open source viewers.
 
 
-lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
+## de Ferranti Data
 
+TBD
 
-## Header 2
+Data from Jonathan de Ferranti's excellent [Viewfinder Panoramas]( http://viewfinderpanoramas.org/ ).
 
-lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
+## USGS Data
 
+TBD
 
-## Header 3
-
-lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
-
+Data from the [USGS]( http://www.usgs.gov/ ) [National Map]( http://nationalmap.gov/index.html ).
 
 

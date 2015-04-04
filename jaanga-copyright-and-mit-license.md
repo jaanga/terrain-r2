@@ -4,9 +4,9 @@ Jaanga Copyright Notice and License
 
 ## Copyright Notice for All Jaanga Works
 
-<a href="http://jaanga.com" target="_blank">jaanga.com</a>  
-<a href="http://jaanga.github.io/" target="_blank">jaanga.github.io</a>  
-<a href="https://github.com/jaanga/" target="_blank">github.com/jaanga</a>
+[jaanga.com[( http://jaanga.com ) 
+[jaanga.github.io]( http://jaanga.github.io/ )  
+[github.com/jaanga]( https://github.com/jaanga/ )
 
 Copyright &copy; 2015 Jaanga authors
 
@@ -14,7 +14,7 @@ Copyright &copy; 2015 Jaanga authors
 
 ## License for All Jaanga Works
 
-Follows the <a href="http://en.wikipedia.org/wiki/MIT_License" target="_blank" >MIT License</a>
+Follows the [MIT License]( http://en.wikipedia.org/wiki/MIT_License )
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the 'Software'), to deal
