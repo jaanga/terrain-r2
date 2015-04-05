@@ -202,6 +202,8 @@
 
 			}
 
+			document.body.style.overflow = 'auto';
+
 		}
 
 	}
@@ -267,6 +269,8 @@
 			iframes[0].parentNode.removeChild( iframes[ 0 ] );
 
 		}
+
+		document.body.style.overflow = 'hidden';
 
 		var ifr = document.body.appendChild( document.createElement( 'iframe' ) );
 		ifr.width = window.innerWidth;
