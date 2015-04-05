@@ -28,6 +28,19 @@ To supply methods, tools, data and demos to help create lively 3D cartography - 
 To enable people who are interested in cartography and geography and are not programmers but have some understanding of some aspects of coding
 to develop news ways of using 3D mapping data and explore news ways of visualizing that data
 
+## Access to Data
+
+You have four ways to access the data for your own use. These methods will be described in detail in due course.
+
+### Fork or download to local machine
+
+### Fork to GitHub Only
+
+### Embed in <iframe>
+
+### Simple linking
+
+
 ## Acknowledgements
 
 Much of the data used in Jaanga Terrain started life here started lifw aboard the International Spce Station 

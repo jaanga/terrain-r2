@@ -21,7 +21,7 @@
 		css.innerHTML = 'body { font: 600 12pt monospace; margin: 0; overflow: hidden; }' +
 			'h1 { margin: 0; }' +
 			'h1 a, #bars { text-decoration: none; }' +
-//			'#menu h2 { background-color: #f8f8f8; padding: 0 5px; }' +
+//			'h2 { background-color: #f8f8f8; padding: 0 5px; }' +
 			'h2.close::before { content: "► "; }' +
 			'h2.open::before { content: "▼ "; }' +
 			'#bars { color: #ccc; }' +
@@ -49,11 +49,13 @@
 
 	}
 
+
 	function slideMenu(){
 
 		header.style.left = header.style.left === '20px' ? '350px' : '20px';
 
 	}
+
 
 	function onHashChange() {
 
@@ -84,6 +86,7 @@
 		ifr.src = hash.substr( 1 );
 
 	}
+
 
 	function loadMarkdownInMenu( fileName, panel ) {
 
@@ -169,6 +172,7 @@
 		}
 
 	}
+
 
 	function loadMarkdownInDiv( fileName ) {
 
