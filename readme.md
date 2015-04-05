@@ -36,7 +36,7 @@ You have four ways to access the data for your own use. These methods will be de
 
 ### Fork to GitHub Only
 
-### Embed in <iframe>
+### Embed in `iframe`
 
 ### Simple linking
 
