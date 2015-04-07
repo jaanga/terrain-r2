@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang=en >
+<head>
+<title>load-png-combine R2</title>
+<meta charset=utf-8 />
+<meta name=author content='Theo Armour' />
+</head>
+<body>
+<script>
+
+	document.body.style.cssText = ' font: bold 12pt monospace; ';
+
+	var canvas = document.body.appendChild( document.createElement( 'canvas' ) );
+	canvas.width = 512;
+	canvas.height = 256;
+	canvas.style.cssText = 'border: 1px red solid;';
+	context = canvas.getContext( '2d' );
+
+	var info = document.body.appendChild( document.createElement( 'div' ) );
+	info.innerHTML = '<a href="" ><h1>' + document.title + '</h1></a>' +
+		'<p><a id=download href=# onclick=downloadIt(); >Download as image</a></p>' +
+		'<div id=msg ></div>';
+
+	var imgNW = document.body.appendChild( document.createElement( 'img' ) );
+	imgNW.onload = function() { context.drawImage( imgNW, 0, 0, 256, 256, 0, 0, 256, 128 ); };
+	imgNW.src = '../../../terrain-srtm30-plus-data-tms-1-7/1/0/0.png';
+
+	var imgNE = document.body.appendChild( document.createElement( 'img' ) );
+	imgNE.onload = function() { context.drawImage( imgNE, 0, 0, 256, 256, 256, 0, 256, 128 ); };
+	imgNE.src = '../../../terrain-srtm30-plus-data-tms-1-7/1/1/0.png';
+
+	var br = document.body.appendChild( document.createElement( 'br' ) );
+
+	var imgSW = document.body.appendChild( document.createElement( 'img' ) );
+	imgSW.onload = function() { context.drawImage( imgSW, 0, 0, 256, 256, 0, 128, 256, 128 ); };
+	imgSW.src = '../../../terrain-srtm30-plus-data-tms-1-7/1/0/1.png';
+
+	var imgSE = document.body.appendChild( document.createElement( 'img' ) );
+	imgSE.onload = function() { context.drawImage( imgSE, 0, 0, 256, 256, 256, 128, 256, 128 ); };
+	imgSE.src = '../../../terrain-srtm30-plus-data-tms-1-7/1/1/1.png';
+
+
+	function downloadIt() {
+
+//		var name = file.name.replace(/\.html/,'-') + imageSize.replace( / /gi,'' ) + '.png';
+
+//		var name = image.src;
+//		name = name.substr( 1 + name.lastIndexOf( '/' ) );
+//		name = name.replace(/\.jpg/,'-') + image.width + 'x'+ image.height + '.png';
+
+		var c2du = canvas.toDataURL(); 
+
+		download.download = '0.png';
+
+		download.href = c2du;
+
+	}
+
+
+</script>
+</body>
+</html>
