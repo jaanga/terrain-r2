@@ -9,8 +9,8 @@
 
 	var latDefault = 37.796; // sf
 	var lonDefault = -122.398; // sf
-	var zoom = 5;
-	var zoomText = '5'; // '7plus';
+	var zoom = 1;
+	var zoomText = '1'; // '7plus';
 
 	var tmsX = lon2tile ( lonDefault, zoom );
 	var tmsY = lat2tile ( latDefault, zoom );
@@ -41,7 +41,6 @@
 
 // current run stats
 	var startTime = Date.now();
-	var startTimeScript = Date.now();
 
 	var count = 0;
 	var byteArray;
@@ -117,7 +116,7 @@ console.log( 'column check', ( 32 * colsPerTMS ) + ( 32 * ( colsPerTMS + 1 ) ) )
 
 		processTiles();
 
-console.log( 'script time ???', Date.now() - startTimeScript );
+console.log( 'zoom', zoom, 'runType', runType, 'script time start', Date.now() - startTime );
 
 	}
 
@@ -146,7 +145,7 @@ console.log( 'script time ???', Date.now() - startTimeScript );
 
 		} else {
 
-console.log( '\n\nscript time', Date.now() - startTimeScript );
+console.log( '\n\nFinish script time', Date.now() - startTime );
 
 		}
 
@@ -213,7 +212,7 @@ console.log( 'bytes', 2 * colsPerTMS * rowsPerTMS );
 
 		}
 
-		var image = new Jimp( '../10x10.png', function () {
+		var image = new Jimp( '../../10x10.png', function () {
 
 			this.resize( colsPerTMS, rowsPerTMS );
 

@@ -4,7 +4,7 @@ Jaanga Copyright Notice and License
 
 ## Copyright Notice for All Jaanga Works
 
-[jaanga.com[( http://jaanga.com ) 
+[jaanga.com]( http://jaanga.com )  
 [jaanga.github.io]( http://jaanga.github.io/ )  
 [github.com/jaanga]( https://github.com/jaanga/ )
 

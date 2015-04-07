@@ -30,20 +30,37 @@ to develop news ways of using 3D mapping data and explore news ways of visualizi
 
 ## Access to Data
 
-You have four ways to access the data for your own use. These methods will be described in detail in due course.
-
-### Fork or download to local machine
-
-### Fork to GitHub Only
-
-### Embed in `iframe`
+You have numerous  ways to access the data for your own use. These methods will be described in greater detail in due course.
 
 ### Simple linking
 
+You may link directly to the Jaanga Terrain heightmap data PNG files and use these files as data sources. 
+All that is require is that you add the line `heightMap.crossOrigin = 'Anonymous';` to any images in your JavaScript file.  
+
+For a simple demo, see: <http://theo-armour.github.io/theo-armour.testing/png-tms7-viewer-3d-features/r1/template-png-tms7-viewer-3d.html>
+
+### Embed in `iframe`
+
+If you need more complex user interface - using jQuery and other libraries - you might consider embedding the Jaanga Terrain script in an iframe.
+
+For a simple demo, see: <http://theo-armour.github.io/theo-armour.testing/png-tms7-viewer-3d-features/r1/png-tms7-viewer-3d.html>
+
+### Fork to GitHub Only
+
+If you need full access to the data but do want to download gigabytes of data, 
+you might consider forking the data to your GitHub online gh-pages repository only.
+
+Download just a few heightmaps for building and testing your scripts. 
+Once finished, upload your script to the gh-pages repository where it can access the entire data set.
+
+### Fork or download to local machine
+
+Of course, if you with you can fork or download a zip file with the entire Jaanga Terrain data set. 
+It's all open data.
 
 ## Acknowledgements
 
-Much of the data used in Jaanga Terrain started life here started lifw aboard the International Spce Station 
+Much of the data used in Jaanga Terrain started life aboard the International Space Station 
 as part of the Shuttle Radar Topography Mission (SRTM):
 
 Wikipedia: [Shuttle Radar Topography Mission]( http://en.wikipedia.org/wiki/Shuttle_Radar_Topography_Mission )
@@ -55,12 +72,36 @@ Wikipedia: [Shuttle Radar Topography Mission]( http://en.wikipedia.org/wiki/Shut
 ## Features
 <!-- and benefits -->
 
+Everything FOSS or Open Data
+
+* Source and data hosted on free server GitHub
+
+Coded for Dummies
+
+* Follows Mr.doobs' manifesto: 'to create a lightweight 3D library with a very low level of complexity — in other words, for dummies'
+* If you know beginner JavaScript you should be able to understand most of the functions fairly quickly and easily
+* if/then, for loops and = are all you need to know
+* Small files that are easy to copy into your own scripts
+
+Coded to help non-programmers do some programming
+
+* If you need to worry about compiling, callbacks and consoles whatever then you are a programmer
+* Jaanga Terrain is about you enhancing your science, engineering and design with some aspects of coding - and \*not\* having to be a full-stack programmer
+
+UI Features
+
+* Display enables pan, rotate and zoom with pointing device
+* Full-screen display with translucent menu
+* Menu is iconizable and drag-able
+* Menu has accordion feature
+
 
 ## Road Map
 
 
 ## Issues / Bugs
 
+Message to: jaanga [at] googlegroups [dot] com.
 
 ## Project Links
 
