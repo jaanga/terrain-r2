@@ -4,6 +4,8 @@ Jaanga Terrain Read Me
 
 Jaanga Terrain is in the process of being completely updated.
 
+Go straight to the [\*fun parts\*]( http://jaanga.github.io/terrain-srtm30-plus-viewers/terrain-srtm30-plus-viewers.html )
+
 <!--
 
 ### Live Demo
@@ -34,14 +36,14 @@ You have numerous  ways to access the data for your own use. These methods will 
 
 ### Simple linking
 
-You may link directly to the Jaanga Terrain heightmap data PNG files and use these files as data sources. 
+You may link directly to the Jaanga Terrain heightmap data PNG files from yur own domain and use these files as data sources. 
 All that is require is that you add the line `heightMap.crossOrigin = 'Anonymous';` to any images in your JavaScript file.  
 
 For a simple demo, see: <http://theo-armour.github.io/theo-armour.testing/png-tms7-viewer-3d-features/r1/template-png-tms7-viewer-3d.html>
 
 ### Embed in `iframe`
 
-If you need more complex user interface - using jQuery and other libraries - you might consider embedding the Jaanga Terrain script in an iframe.
+If you need more complex user interface - using jQuery and other libraries - you might consider embedding the Jaanga Terrain script in an iframe in a web page served from your site.
 
 For a simple demo, see: <http://theo-armour.github.io/theo-armour.testing/png-tms7-viewer-3d-features/r1/png-tms7-viewer-3d.html>
 
@@ -78,22 +80,24 @@ Everything FOSS or Open Data
 
 Coded for Dummies
 
-* Follows Mr.doobs' manifesto: 'to create a lightweight 3D library with a very low level of complexity — in other words, for dummies'
+* Follows [Mr.doobs' manifesto]( https://github.com/mrdoob/three.js/blob/master/README.md ): 'to create a lightweight 3D library with a very low level of complexity — in other words, for dummies'
+* Everything written in JavaScript
 * If you know beginner JavaScript you should be able to understand most of the functions fairly quickly and easily
-* if/then, for loops and = are all you need to know
+* 'If/then', 'for' loops and '=' are all you need to know
 * Small files that are easy to copy into your own scripts
 
 Coded to help non-programmers do some programming
 
-* If you need to worry about compiling, callbacks and consoles whatever then you are a programmer
+* Based upon a very popular 3D library - with many examples and much support
+* Easy to add animations, shaders, physics and more
 * Jaanga Terrain is about you enhancing your science, engineering and design with some aspects of coding - and \*not\* having to be a full-stack programmer
 
 UI Features
 
 * Display enables pan, rotate and zoom with pointing device
-* Full-screen display with translucent menu
-* Menu is iconizable and drag-able
-* Menu has accordion feature
+* Full-screen display with translucent menus
+* Menus slide out of te way
+* Menus have an accordion feature
 
 
 ## Road Map
