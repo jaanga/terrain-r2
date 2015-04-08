@@ -25,13 +25,13 @@ The work includes derived open data and open source data viewers.
 
 ## de Ferranti Data
 
-TBD
+Coming soon!
 
 Data from Jonathan de Ferranti's excellent [Viewfinder Panoramas]( http://viewfinderpanoramas.org/ ).
 
 ## USGS Data
 
-TBD
+Coming Soon!
 
 Data from the [USGS]( http://www.usgs.gov/ ) [National Map]( http://nationalmap.gov/index.html ).
 

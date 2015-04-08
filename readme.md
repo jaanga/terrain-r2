@@ -2,9 +2,14 @@ Jaanga Terrain Read Me
 ===
 <span style=display:none; >[View as web page]( http://jaanga.github.io/terrain-r2/terrain.html "view the files as apps." ) <input value="<< You are here" size=15 style="font:bold 11pt monospace;border-width:0;" ></span>  
 
-Jaanga Terrain is in the process of being completely updated.
+
 
 Go straight to the [\*fun parts\*]( http://jaanga.github.io/terrain-srtm30-plus-viewers/terrain-srtm30-plus-viewers.html )
+
+Jaanga Terrain is in the process of being completely updated.
+
+Currently this release supplies 30 second ( 1 km ) SRTM data and data viewers. 
+1 second / 30 meter data is in the works and will start appearing here soon.
 
 <!--
 
@@ -23,7 +28,9 @@ _XXX - latest revision_ / [Full Screen]( http://XXX.github.io/latest/index.html)
 <!-- a statement of a rationale, applicable now as well as in the future -->
 To make 3D geophysical data observable in 3D with open access data and open source tools
 
-To supply methods, tools, data and demos to help create lively 3D cartography - faster and more easily than ever before
+To supply methods, tools, data and demos to help create lively 3D cartography - faster and more easily than ever before.
+
+To provide the background and details and instructions so that you can do this too. 
 
 ### Vision  
 <!--  a descriptive picture of a desired future state -->
