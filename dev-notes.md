@@ -2,6 +2,41 @@ Dev Notes
 ===
 
 
+2015-04-09 ~ Theo
+
+SRTM30 Plus data and Viewers ready to start showing
+
+http://dds.cr.usgs.gov/srtm/version2_1/SRTM1/
+Server does not allow CORS access. Bummer!
+
+Will download a bunch and convert to PNG, see what files sizes look like then decide how much to put up on GitHub
+
+
+Sometime, will have 
+
+360 x 180 ( 64,800 ) files at 120 points per degree
+
+X number de Ferranti files at 1201
+
+X number USGS files at 3601
+
+Will have three arrays. Look first in USGS. If not file found, then drop down.
+
+[ 'file name', 'path' ], ...
+
+next:
+
+open zip file, extract hgt, parse hgt, save png. repeat
+
+open topo1.gsd, split into 1 x 1 degree tiles
+
+see: 
+
+C:\Users\Theo\Dropbox\Public\git-repos\jaanga-terrain\terrain-plus\cookbook\hgt-1sec-viewer-3d\r1\hgt-1sec-viewer-3d.html
+C:\Users\Theo\Dropbox\Public\git-repos\jaanga-terrain\terrain-plus\cookbook\hgt-tms7-zip-viewer-3d\r1\template-tms7-htg-viewer-zip.html
+
+
+
 2015-04-03 ~ Theo
 	* png-tms7-viewer-3d.html
 		* going very well / ready to show

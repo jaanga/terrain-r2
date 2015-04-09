@@ -8,7 +8,7 @@
 [Jaanga Terrain Read Me]( #readme.md# )  
 [Cookbook Read Me]( #./cookbook/readme.md# )  
 [Copyright & License]( #jaanga-copyright-and-mit-license.md# )  
-[Attributions & Thanks]( #thanks.md# )  
+
 
 &raquo; [Jaanga Terrain source code on GitHub]( https://github.com/jaanga/terrain-r2 "View files with GitHub" ) <scan style=display:none ><< You are here</scan>  
 
@@ -34,5 +34,12 @@ Data from Jonathan de Ferranti's excellent [Viewfinder Panoramas]( http://viewfi
 Coming Soon!
 
 Data from the [USGS]( http://www.usgs.gov/ ) [National Map]( http://nationalmap.gov/index.html ).
+
+## Attributions (open)
+
+[Attributions & Thanks]( #thanks.md# )  
+
+It takes a world of effort to make maps.
+
 
 
