@@ -8,7 +8,7 @@ Go straight to the [\*fun parts\*]( http://jaanga.github.io/terrain-srtm30-plus-
 
 Jaanga Terrain is in the process of being completely updated.
 
-Currently this release supplies 30 second ( 1 km ) SRTM data and data viewers. 
+Currently this release supplies 30 second ( 1 km ) [SRTM]( http://en.wikipedia.org/wiki/Shuttle_Radar_Topography_Mission ) data and data viewers. 
 1 second / 30 meter data is in the works and will start appearing here soon.
 
 <!--
@@ -39,7 +39,7 @@ to develop news ways of using 3D mapping data and explore news ways of visualizi
 
 ## Access to Data
 
-You have numerous  ways to access the data for your own use. These methods will be described in greater detail in due course.
+You have numerous ways to access Jaanga Terrain data for your own use. These methods will be described in greater detail in due course.
 
 ### Simple linking
 
@@ -83,9 +83,9 @@ Wikipedia: [Shuttle Radar Topography Mission]( http://en.wikipedia.org/wiki/Shut
 
 Everything FOSS or Open Data
 
-* Source and data hosted on free server GitHub
+* Source code and data are hosted on a free server: GitHub
 
-Coded for Dummies
+Coded for 'Dummies'
 
 * Follows [Mr.doobs' manifesto]( https://github.com/mrdoob/three.js/blob/master/README.md ): 'to create a lightweight 3D library with a very low level of complexity — in other words, for dummies'
 * Everything written in JavaScript
@@ -95,11 +95,11 @@ Coded for Dummies
 
 Coded to help non-programmers do some programming
 
-* Based upon a very popular 3D library - with many examples and much support
+* Based upon a very popular 3D library - [Three.js]( http://threejs.org ) - which has many examples and much support
 * Easy to add animations, shaders, physics and more
 * Jaanga Terrain is about you enhancing your science, engineering and design with some aspects of coding - and \*not\* having to be a full-stack programmer
 
-UI Features
+User Interface (UI) Features
 
 * Display enables pan, rotate and zoom with pointing device
 * Full-screen display with translucent menus
