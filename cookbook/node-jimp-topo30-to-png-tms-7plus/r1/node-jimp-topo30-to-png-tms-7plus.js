@@ -9,8 +9,8 @@
 
 	var latDefault = 37.796; // sf
 	var lonDefault = -122.398; // sf
-	var zoom = 1;
-	var zoomText = '1'; // '7plus';
+	var zoom = 6;
+	var zoomText = '6'; // '7plus';
 
 	var tmsX = lon2tile ( lonDefault, zoom );
 	var tmsY = lat2tile ( latDefault, zoom );

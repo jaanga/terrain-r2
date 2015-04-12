@@ -172,8 +172,6 @@ console.log( 'dirName', dirName );
 //		var startTime = Date.now();
 
 		rowStart = lat > 0 ? 120 * ( 89 - lat ) : -120 * lat;
-
-
 		rowEnd = lat >= 0 ? rowStart + 120 : -120 * ( lat - 1 );
 
 		columnStart = columns + ( Math.floor( 120 * lon ) );

@@ -9,6 +9,9 @@ Go straight to the [\*fun parts\*]( http://jaanga.github.io/terrain-srtm30-plus-
 Jaanga Terrain is in the process of being completely updated.
 
 Currently this release supplies 30 second ( 1 km ) [SRTM]( http://en.wikipedia.org/wiki/Shuttle_Radar_Topography_Mission ) data and data viewers. 
+
+All data is presented in the form of [heightmaps]( http://en.wikipedia.org/wiki/Heightmap ) saved as PNG files.
+
 1 second / 30 meter data is in the works and will start appearing here soon.
 
 <!--

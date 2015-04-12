@@ -1,6 +1,38 @@
 Dev Notes
 ===
 
+2015-04-12 ~ Theo
+
+It turns out that imgur *IS( CORS compatible. All you need to do is add the right bit of code.
+
+Why did it take me perhaps a year to figure this out? So it goes.
+
+180 * 360 = 64000 images at 120 x 120 is probably too much to upload
+
+but 10x10 groups would make only 648 images to upload. Or 1 x 180 groups would mean only 360
+
+10x10 probably good, keeps under imgur 5mb png limit
+
+What about the 1 second images?
+
+Turns out that imgur wants max 5mb png images.
+
+So would need to break down 1second images into 4 tiles.
+
+But the whole world on imgur would be cool!
+
+and given that we will have more and more data, best to break down *all* images into four quarters: a, b, c, d
+
+probably can make transparent. Always load all four and combine.
+
+Make it seem as if always dealing with single 1x1 degree area.
+
+
+
+
+
+
+
 
 2015-04-09 ~ Theo
 
@@ -26,9 +58,9 @@ Will have three arrays. Look first in USGS. If not file found, then drop down.
 
 next:
 
-open zip file, extract hgt, parse hgt, save png. repeat
+open zip file, extract hgt, parse hgt, save png. repeat  << done
 
-open topo1.gsd, split into 1 x 1 degree tiles
+open topo1.gsd, split into 1 x 1 degree tiles  << done
 
 see: 
 
