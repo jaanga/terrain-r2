@@ -49,9 +49,11 @@
 
 //		slideMenu();
 
+		onHashChange();
+
 		window.addEventListener ( 'hashchange', onHashChange, false );
 
-		onHashChange();
+
 
 	}
 
@@ -65,9 +67,9 @@
 
 	function onHashChange() {
 
-		hashes = location.hash.split ( '#' );
+		var hashes = location.hash.split ( '#' );
 
-		if ( hashes.length < 1 ) { return; } 
+		if ( hashes.length < 2 ) { return; } 
 
 		var fileName = hashes[ 1 ].toLowerCase();
 
