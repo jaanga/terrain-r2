@@ -45,8 +45,8 @@ You have numerous ways to access Jaanga Terrain data for your own use. These met
 
 ### Simple linking
 
-You may link directly to the Jaanga Terrain heightmap data PNG files from yur own domain and use these files as data sources. 
-All that is require is that you add the line `heightMap.crossOrigin = 'Anonymous';` to any images in your JavaScript file.  
+You may link directly to the Jaanga Terrain heightmap data PNG files from your own domain and use these files as data sources. 
+All that is required is that you add the line `heightMap.crossOrigin = 'Anonymous';` to any images in your JavaScript file.  
 
 For a simple demo, see: <http://theo-armour.github.io/theo-armour.testing/png-tms7-viewer-3d-features/r1/template-png-tms7-viewer-3d.html>
 
