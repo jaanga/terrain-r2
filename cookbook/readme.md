@@ -1,15 +1,19 @@
 Terrain Cookbook Read Me
 ===
 
-[Source code on GitHub]( https://github.com/jaanga/terrain-r2/tree/gh-pages/cookbook )
+<span style=display:none; >[View as web page]( http://jaanga.github.io/terrain-r2/terrain.html "view the files as apps." ) <input value="<< You are here" size=15 style="font:bold 11pt monospace;border-width:0;" ></span>  
 
-JavaScript and [Node.js]( http://nodejs.org ) files used to access and manipulate the data.
+
+This section  describes JavaScript and [Node.js]( http://nodejs.org ) files used to access and manipulate the data.
 
 
 ## Generally
 
-Windows 8.1 and Chrome. Files edited using Notepad++.
+Current development and testing based on Windows 8.1 and Chrome. Files edited using Notepad++.
 
+Scripts appear to work on FireFox and IE on Windows, but not thoroughly investigated
+
+Scripts appear to work on Google Nexus 6 and iPhone 6.
 
 ## SRTM30 Plus Data
 
@@ -29,7 +33,7 @@ Default Node has a file size limitation of 1 gigabyte.
 
 The available options are to recompile Node with a higher file size limit or to split the file into smaller pieces.
 
-Given our level of comptetance we choose the latter.
+Given our level of competence, we choose the latter.
 
 Google provided a list of Windows utilities to split files into smaller chunks.
 
@@ -63,9 +67,9 @@ There is also a 'test' runtype option.
 
 Probably an easier file to start with is the script that generates the 10x10 degree heightmaps:
 
-<https://github.com/jaanga/terrain-r2/blob/gh-pages/cookbook/node-jimp-topo30-to-png-1degree/r0/node-jimp-topo30-to-png-1degree.js>
+<https://github.com/jaanga/terrain-r2/blob/gh-pages/cookbook/node-jimp-topo30-to-png-10degree/r1/node-jimp-srtm30-to-10deg-png.js>
 
-It too requires that you edit the text to say which file you want to proceess.
+It too requires that you edit the text to say which file you want to process.
 
 The main `createPNGTile` function contains two `for` loops. There is a good chance that these may be combined into a single loop.
 
@@ -73,7 +77,7 @@ In any case, the script only takes a matter of minutes to complete so speed is n
 
 ### Node NPM Modules
 
-We looked at PNGJS, LWIP amd JIMP.
+We looked at PNGJS, LWIP ad JIMP.
 
 PNGJS creates and allows pixels edits but does not resize.
 LWIP editing pixes becomes a callback hell.
