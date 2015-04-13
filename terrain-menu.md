@@ -29,13 +29,13 @@ Coming soon!
 
 Data from Jonathan de Ferranti's excellent [Viewfinder Panoramas]( http://viewfinderpanoramas.org/ ).
 
-## USGS Data
+## USGS Data (open)
 
 Data from the [USGS]( http://www.usgs.gov/ ) [National Map]( http://nationalmap.gov/index.html ).
 
 [Jaanga Terrain USGS Data 1 Second]( https://github.com/jaanga/terrain-usgs-data-1second )
 
-First cut a viewer. Be prepared for some strange effects!
+First cut at a viewer. Be prepared for some strange effects!
 
 [Jaanga Terrain PNG USGS 1 Second Viewer 3D Hello World]( http://jaanga.github.io/terrain-usgs-viewers/png-usgs-viewer-3d-hello-world/r1/png-usgs-viewer-3d-hello-world.html )
 

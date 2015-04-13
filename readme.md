@@ -3,7 +3,8 @@ Jaanga Terrain Read Me
 <span style=display:none; >[View as web page]( http://jaanga.github.io/terrain-r2/terrain.html "view the files as apps." ) <input value="<< You are here" size=15 style="font:bold 11pt monospace;border-width:0;" ></span>  
 
 
-Go straight to the [\*fun parts\*]( http://jaanga.github.io/terrain-srtm30-plus-viewers/terrain-srtm30-plus-viewers.html )
+Go straight to the [\*fun parts\*]( http://jaanga.github.io/terrain-srtm30-plus-viewers/terrain-srtm30-plus-viewers.html ). 
+Or to the [\*bizarre\*]( http://jaanga.github.io/terrain-usgs-viewers/png-usgs-viewer-3d-hello-world/r1/png-usgs-viewer-3d-hello-world.html )
 
 Jaanga Terrain is in the process of being completely updated.
 
