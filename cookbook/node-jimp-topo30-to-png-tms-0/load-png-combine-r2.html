@@ -3,16 +3,23 @@
 <head>
 <title>load-png-combine R2</title>
 <meta charset=utf-8 />
-<meta name=author content='Theo Armour' />
 </head>
 <body>
 <script>
 
 	document.body.style.cssText = ' font: bold 12pt monospace; ';
+	sourceDir =  'C:/temp/srtm-png-tms-1-7/1/';
+	suffix - '-512x256.png';
 
 	var canvas = document.body.appendChild( document.createElement( 'canvas' ) );
-	canvas.width = 512;
-	canvas.height = 256;
+	canvas.width = 1024;
+	canvas.height = 512;
+
+	srcWidth = 512;
+	srcHeight = 256;
+	dstWidth = canvas.width / 2;
+	dstHeight = canvas.height / 2;
+
 	canvas.style.cssText = 'border: 1px red solid;';
 	context = canvas.getContext( '2d' );
 
@@ -22,22 +29,26 @@
 		'<div id=msg ></div>';
 
 	var imgNW = document.body.appendChild( document.createElement( 'img' ) );
-	imgNW.onload = function() { context.drawImage( imgNW, 0, 0, 256, 256, 0, 0, 256, 128 ); };
-	imgNW.src = '../../../terrain-srtm30-plus-data-tms-1-7/1/0/0.png';
+	imgNW.onload = function() { context.drawImage( imgNW, 0, 0, srcWidth, srcHeight, 0, 0, dstWidth, dstHeight ); };
+//	imgNW.src = '../../../terrain-srtm30-plus-data-tms-1-7/1/0/0.png';
+	imgNW.src = sourceDir + '0/0' + suffix;
 
 	var imgNE = document.body.appendChild( document.createElement( 'img' ) );
-	imgNE.onload = function() { context.drawImage( imgNE, 0, 0, 256, 256, 256, 0, 256, 128 ); };
-	imgNE.src = '../../../terrain-srtm30-plus-data-tms-1-7/1/1/0.png';
+	imgNE.onload = function() { context.drawImage( imgNE, 0, 0, srcWidth, srcHeight, dstWidth, 0, dstWidth, dstHeight ); };
+//	imgNE.src = '../../../terrain-srtm30-plus-data-tms-1-7/1/1/0.png';
+	imgNW.src = sourceDir + '1/0' + suffix;
 
 	var br = document.body.appendChild( document.createElement( 'br' ) );
 
 	var imgSW = document.body.appendChild( document.createElement( 'img' ) );
-	imgSW.onload = function() { context.drawImage( imgSW, 0, 0, 256, 256, 0, 128, 256, 128 ); };
-	imgSW.src = '../../../terrain-srtm30-plus-data-tms-1-7/1/0/1.png';
+	imgSW.onload = function() { context.drawImage( imgSW, 0, 0, srcWidth, srcHeight, 0, dstHeight, dstWidth, dstHeight ); };
+//	imgSW.src = '../../../terrain-srtm30-plus-data-tms-1-7/1/0/1.png';
+	imgNW.src = sourceDir + '0/1' + suffix;
 
 	var imgSE = document.body.appendChild( document.createElement( 'img' ) );
-	imgSE.onload = function() { context.drawImage( imgSE, 0, 0, 256, 256, 256, 128, 256, 128 ); };
-	imgSE.src = '../../../terrain-srtm30-plus-data-tms-1-7/1/1/1.png';
+	imgSE.onload = function() { context.drawImage( imgSE, 0, 0, srcWidth, srcHeight, dstWidth, dstHeight, dstWidth, dstHeight ); };
+//	imgSE.src = '../../../terrain-srtm30-plus-data-tms-1-7/1/1/1.png';
+	imgNW.src = sourceDir + '1/1' + suffix;
 
 
 	function downloadIt() {

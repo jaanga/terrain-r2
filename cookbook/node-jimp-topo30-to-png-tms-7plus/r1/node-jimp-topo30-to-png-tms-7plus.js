@@ -3,14 +3,14 @@
 	var fs = require('fs');
 	var Jimp = require( 'jimp' );
 
-//	var runType = 'north';
-	var runType = 'south';
+	var runType = 'north';
+//	var runType = 'south';
 //	var runType = 'test';
 
 	var latDefault = 37.796; // sf
-	var lonDefault = -122.398; // sf
-	var zoom = 6;
-	var zoomText = '6'; // '7plus';
+	var lonDefault = 111; //-122.398; // sf
+	var zoom = 1;
+	var zoomText = '1'; // '7plus';
 
 	var tmsX = lon2tile ( lonDefault, zoom );
 	var tmsY = lat2tile ( latDefault, zoom );
@@ -69,11 +69,11 @@
 			TMS7plusXMax = Math.pow( 2, zoom );
 			TMS7plusYMin = 0.5 * Math.pow( 2, zoom );
 			TMS7plusYMax = Math.pow( 2, zoom );
-			outputDir = 'C:/temp/srtm-png-tms-1-7/' + zoomText + '/';
+			outputDir = 'c:/temp/srtm-png-tms-1-7/' + zoomText + '/';
 
 		} else {
 
-			fileName = 'c:/temp/topo30/topo1.gsd';
+			fileName = 'c:/temp/topo30/topo2.gsd';
 			TMS7plusX = tmsX; // 20 sf
 			TMS7plusY = tmsY; // 49 sf
 			TMS7plusXMax = tmsX + 1;
@@ -81,15 +81,15 @@
 			TMS7plusYMax = tmsY + 1;
 			TMS7plusYMin = 0;
 //			outputDir = './';
-			outputDir = 'C:/temp/srtm-png-test/'  + zoomText + '/';
+			outputDir = 'c:/temp/srtm-png-tms-1-7/'  + zoomText + '/';
 
 		}
 
-/*
+
 console.log( '\nfileName', fileName );
 console.log( 'colsPerTMS', colsPerTMS );
 console.log( 'column check', ( 32 * colsPerTMS ) + ( 32 * ( colsPerTMS + 1 ) ) );
-*/
+
 
 		fs.readFile( fileName, callbackReadFile );
 
@@ -105,7 +105,7 @@ console.log( 'column check', ( 32 * colsPerTMS ) + ( 32 * ( colsPerTMS + 1 ) ) )
 
 		byteArray = buffer;  // make global
 
-//console.log( '\nfile loaded - byteArray.length', byteArray.length );
+console.log( '\nfile loaded - byteArray.length', byteArray.length );
 //console.log( byteArray );
 
 		if ( runType !== 'test' && !fs.existsSync( outputDir + TMS7plusX ) ) {
@@ -141,7 +141,7 @@ console.log( 'zoom', zoom, 'runType', runType, 'script time start', Date.now() -
 
 			}
 
-			createPNGTile( TMS7plusX, TMS7plusY );  // comment out to process just a single column
+//			createPNGTile( TMS7plusX, TMS7plusY );  // comment out to process just a single column
 
 		} else {
 
@@ -182,7 +182,7 @@ console.log( '\n\nFinish script time', Date.now() - startTime );
 
 		cropFile = new Buffer( 0 );
 
-/*
+
 console.log( '\ntileX', tileX, 'tileY', tileY, 'count', count );
 
 console.log( 'latStart', latStart.toFixed( 1 ) );
@@ -200,7 +200,7 @@ console.log( '\nbyteStart', byteStart );
 console.log( 'byteEnd', byteEnd );
 
 console.log( 'bytes', 2 * colsPerTMS * rowsPerTMS );
-*/
+
 
 		for ( var row = rowStart; row < rowEnd; row++ ) {
 
@@ -209,6 +209,9 @@ console.log( 'bytes', 2 * colsPerTMS * rowsPerTMS );
 			lineSlice = byteArray.slice( dataIndex, dataIndex + 2 * colsPerTMS );
 
 			cropFile = Buffer.concat( [cropFile, lineSlice] );
+
+//process.stdout.write('\033c');
+//console.log( 'row', row );
 
 		}
 
@@ -233,14 +236,14 @@ console.log( 'bytes', 2 * colsPerTMS * rowsPerTMS );
 // positive elevations start at 1
 // negative elevations start at 65535
 
-if ( elevation0 > 1300 && elevation0 < 61800 ) {  // San Francisco 20/49.png
+//if ( elevation0 > 1300 && elevation0 < 61800 ) {  // San Francisco 20/49.png
 
 // console.log(  'elevation0', elevation0, cropFile[ dataIndex - 4 ] + ' ' + cropFile[ dataIndex - 3 ] + ' ' + cropFile[ dataIndex - 2 ] + ' ' + cropFile[ dataIndex - 1 ] );
 
-}
+//}
 
 				elevation = elevation0 < 32768 ? elevation0 : elevation0 - 65535;
-
+/*
 if ( elevation <= 0  ) {
 
 countM1++;
@@ -249,6 +252,7 @@ countM1++;
 
 min = elevation < min ? elevation : min;
 max = elevation > max ? elevation : max;
+*/
 
 				png[ pngIndex ] = elevation & 0x0000ff;
 				png[ pngIndex + 1 ] = ( elevation & 0x00ff00 ) >> 8;
@@ -266,7 +270,12 @@ console.log( png[ pngIndex ] + ' ' + png[ pngIndex + 1 ] + ' ' + png[ pngIndex +
 }
 */
 
+//process.stdout.write('\033c');
+//console.log( '\count0', count0++  );
+
 			}
+
+
 /*
 console.log( '\nmin', min, 'max', max  );
 console.log( '\countM1', countM1  );
@@ -275,17 +284,17 @@ console.log( png.slice( 0, 100 ) );
 */
 			if ( zoomText !== '7+' ) {
 
-				this.resize( 256, 256 );
+				this.resize( 512, 256 );
 
 			}
 
 			if ( runType !== 'testxxx' ) {
 
-				this.write( outputDir + tileX + '/' + tileY + '.png', cb ) // save
+				this.write( outputDir + tileX + '/' + tileY + '-512x256.png', cb ) // save
 
 			} else {
 
-				this.write( outputDir + tileY + '.png', cb ) // save
+				this.write( outputDir + tileY + '-512x256.png', cb ) // save
 
 			}
 

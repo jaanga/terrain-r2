@@ -1,9 +1,31 @@
 Dev Notes
 ===
 
+2015-04-13 ~ Theo
+
+Built a sphere section updater that always faces the camera
+
+Built a Google maps updater that updates as you move a slider
+
+For 3D Globe Need
+
+512x256
+1024x512
+2048x1024
+More? Whatever ever fits under Imgur 5md PNG limit
+heightmaps of the earth from SRTM 30
+
+Overlays that slide
+3D meshes that slide
+
+Built a 3D Globe with Google maps zoom 5 as a texture - needs mercatoriztion and it's good to go...
+
+
+
+
 2015-04-12 ~ Theo
 
-It turns out that imgur *IS( CORS compatible. All you need to do is add the right bit of code.
+It turns out that imgur *IS* CORS compatible. All you need to do is add the right bit of code.
 
 Why did it take me perhaps a year to figure this out? So it goes.
 

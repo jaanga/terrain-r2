@@ -49,21 +49,26 @@ You have numerous ways to access Jaanga Terrain data for your own use. These met
 You may link directly to the Jaanga Terrain heightmap data PNG files from your own domain and use these files as data sources. 
 All that is required is that you add the line `heightMap.crossOrigin = 'Anonymous';` to any images in your JavaScript file.  
 
-For a simple demo, see: <http://theo-armour.github.io/theo-armour.testing/png-tms7-viewer-3d-features/r1/template-png-tms7-viewer-3d.html>
+For a simple jsFiddle demo, see: <http://jsfiddle.net/theo/9byr303n/>
 
 ### Embed in `iframe`
 
-If you need more complex user interface - using jQuery and other libraries - you might consider embedding the Jaanga Terrain script in an iframe in a web page served from your site.
+If you need more complex user interface - for example using jQuery and other libraries - you might consider embedding the Jaanga Terrain script in an iframe in a web page served from your site.
 
 For a simple demo, see: <http://theo-armour.github.io/theo-armour.testing/png-tms7-viewer-3d-features/r1/png-tms7-viewer-3d.html>
 
+[Source code on GitHub]( https://github.com/theo-armour/theo-armour.testing/tree/gh-pages/png-tms7-viewer-3d-features/r1 )
+
+Just as in the previous demo, you may access the gigabytes of Jaanga Terrain data without having to download it or fork it.
+
+
 ### Fork to GitHub Only
 
-If you need full access to the data but do want to download gigabytes of data, 
-you might consider forking the data to your GitHub online gh-pages repository only.
-
-Download just a few heightmaps for building and testing your scripts. 
-Once finished, upload your script to the gh-pages repository where it can access the entire data set.
+If you need full access to the data but do not want to download gigabytes of data, 
+you might consider forking the Jaanga Terrain data to a GitHub online gh-pages repository belonging to you or to a GitHub Organization.
+In this scenario you never download the full data set to your local hard disk.
+You only download just a few heightmaps for local building and testing your scripts. 
+Once finished, upload your scripts to the gh-pages Jaanga Terrain repository where it can access the entire Jaanga Terrain data set.
 
 ### Fork or download to local machine
 
@@ -76,7 +81,6 @@ Much of the data used in Jaanga Terrain started life aboard the International Sp
 as part of the Shuttle Radar Topography Mission (SRTM):
 
 Wikipedia: [Shuttle Radar Topography Mission]( http://en.wikipedia.org/wiki/Shuttle_Radar_Topography_Mission )
-
 
 [Jet Propulsion Laboratory (JPL)]( http://www.jpl.nasa.gov/ ): [Shuttle Radar Topography Mission]( http://www2.jpl.nasa.gov/srtm/ )
 
