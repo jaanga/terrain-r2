@@ -78,12 +78,15 @@ console.log( '\nfile loaded - byteArrayOneSec.length', byteArrayOneSec.length );
 			max = 0;
 			min = 0;
 
-			var count0 = 0;
-			var countM1 = 0;
-
 			for ( var pngIndex = 0; pngIndex < png.length; pngIndex += 4 ) {
 
 				elevation0 = byteArrayOneSec[ dataIndex++ ] * 256 + byteArrayOneSec[ dataIndex++ ];
+
+				if ( elevation0 === 65535 || elevation0 === 32768 ) { 
+
+					elevation0 = 0;
+
+				}
 
 				elevation = elevation0 < 32768 ? elevation0 : elevation0 - 65535;
 

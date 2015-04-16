@@ -3,8 +3,8 @@
 	var fs = require('fs');
 	var Jimp = require( 'jimp' );
 
-	var runType = 'north';
-//	var runType = 'south';
+//	var runType = 'north';
+	var runType = 'south';
 //	var runType = 'test';
 
 	var latDefault = 37.796; // sf
@@ -73,7 +73,7 @@
 
 		} else {
 
-			fileName = 'c:/temp/topo30/topo2.gsd';
+			fileName = 'c:/temp/topo30/topo1.gsd';
 			TMS7plusX = tmsX; // 20 sf
 			TMS7plusY = tmsY; // 49 sf
 			TMS7plusXMax = tmsX + 1;
@@ -141,7 +141,7 @@ console.log( 'zoom', zoom, 'runType', runType, 'script time start', Date.now() -
 
 			}
 
-//			createPNGTile( TMS7plusX, TMS7plusY );  // comment out to process just a single column
+			createPNGTile( TMS7plusX, TMS7plusY );  // comment out to process just a single column
 
 		} else {
 
@@ -242,6 +242,12 @@ console.log( 'bytes', 2 * colsPerTMS * rowsPerTMS );
 
 //}
 
+				if ( elevation0 === 65535 || elevation0 === 32768 ) { 
+
+					elevation0 = 0;
+
+				}
+
 				elevation = elevation0 < 32768 ? elevation0 : elevation0 - 65535;
 /*
 if ( elevation <= 0  ) {
@@ -284,7 +290,7 @@ console.log( png.slice( 0, 100 ) );
 */
 			if ( zoomText !== '7+' ) {
 
-				this.resize( 512, 256 );
+				this.resize( 1024, 512 );
 
 			}
 

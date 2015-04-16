@@ -12,7 +12,7 @@ Currently this release supplies 30 second ( 1 km ) [SRTM]( http://en.wikipedia.o
 
 All data is presented in the form of [heightmaps]( http://en.wikipedia.org/wiki/Heightmap ) saved as PNG files.
 
-1 second / 30 meter data is in the works and will start appearing here soon.
+1 second / 30 meter data is in the works and is just starting to appear here.
 
 <!--
 

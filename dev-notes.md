@@ -1,6 +1,66 @@
 Dev Notes
 ===
 
+2015-04-15 ~ Theo
+
+
+3D Globe now has two forms:
+
+* low res - while globe
+* medium res - quarter globe
+* need to add
+	* map textures
+	* links from one to the other
+
+
+New: node-srtm30-plus-analyze-r1.js
+
+With this script, I think I've found source of errors translation errors
+
+Coming up
+
+clean up: node-jimp-topo30-to-png-tms-7plus.js
+
+and redo all the tms files
+
+See if can add bitmaps to 3D Globes
+Add to the read me files
+
+USGS reader
+
+figure out how to add map overlay textures
+
+
+
+2015-04-14 ~ Theo
+
+node-jimp-topo30-to-png-tms-7plus.js
+
+Had a lot of issues producing the 4 zoom 1 PNGs to be used to build heightmap for 3D globe
+
+* needs a code clean-up
+* must change from string concat to push to an array.
+
+On the other hand, I am very pleased that it mostly 'just works.'
+
+3D Globe is coming along
+
+* should have sphere section with, say, 512 x 256 vertices covering just a quarter of the globe at any time
+* TMS maps as textures beginning to work
+	* needs 'mercatoring'
+
+USGS 1 Second
+
+* coming along fast
+* location viewer moving along well
+
+Coming up
+
+Find accurate way of overlaying TMS images as textures on 3D meshes: then we are gold
+
+
+
+4147202174688893
 2015-04-13 ~ Theo
 
 Built a sphere section updater that always faces the camera

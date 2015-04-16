@@ -9,7 +9,7 @@
 
 	document.body.style.cssText = ' font: bold 12pt monospace; ';
 	sourceDir =  'C:/temp/srtm-png-tms-1-7/1/';
-	suffix - '-512x256.png';
+	suffix = '-512x256.png';
 
 	var canvas = document.body.appendChild( document.createElement( 'canvas' ) );
 	canvas.width = 1024;
@@ -36,19 +36,19 @@
 	var imgNE = document.body.appendChild( document.createElement( 'img' ) );
 	imgNE.onload = function() { context.drawImage( imgNE, 0, 0, srcWidth, srcHeight, dstWidth, 0, dstWidth, dstHeight ); };
 //	imgNE.src = '../../../terrain-srtm30-plus-data-tms-1-7/1/1/0.png';
-	imgNW.src = sourceDir + '1/0' + suffix;
+	imgNE.src = sourceDir + '1/0' + suffix;
 
 	var br = document.body.appendChild( document.createElement( 'br' ) );
 
 	var imgSW = document.body.appendChild( document.createElement( 'img' ) );
 	imgSW.onload = function() { context.drawImage( imgSW, 0, 0, srcWidth, srcHeight, 0, dstHeight, dstWidth, dstHeight ); };
 //	imgSW.src = '../../../terrain-srtm30-plus-data-tms-1-7/1/0/1.png';
-	imgNW.src = sourceDir + '0/1' + suffix;
+	imgSW.src = sourceDir + '0/1' + suffix;
 
 	var imgSE = document.body.appendChild( document.createElement( 'img' ) );
 	imgSE.onload = function() { context.drawImage( imgSE, 0, 0, srcWidth, srcHeight, dstWidth, dstHeight, dstWidth, dstHeight ); };
 //	imgSE.src = '../../../terrain-srtm30-plus-data-tms-1-7/1/1/1.png';
-	imgNW.src = sourceDir + '1/1' + suffix;
+	imgSE.src = sourceDir + '1/1' + suffix;
 
 
 	function downloadIt() {

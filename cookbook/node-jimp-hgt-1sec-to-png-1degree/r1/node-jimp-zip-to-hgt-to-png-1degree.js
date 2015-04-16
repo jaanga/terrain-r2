@@ -20,7 +20,7 @@
 
 //	var dataBytesPerRow = 2 * columns;// 2 bytes per column
 
-	var count = 154;
+	var count = 0;
 
 	var min, max;
 
@@ -30,8 +30,7 @@
 
 //		fs.readFile( oneSecFileName, callbackReadOneSec );
 
-
-		// Read the contents of the file into memory.
+// Read the contents of the file into memory.
 		fs.readdir( oneSecZipDir, function (err, result) {
 
 			if (err) throw err;
@@ -75,12 +74,12 @@
 			max = 0;
 			min = 0;
 
-			var count0 = 0;
+//			var count0 = 0;
 //			var countM1 = 0;
-//
+
 			for ( var pngIndex = 0; pngIndex < png.length; pngIndex += 4 ) {
 
-				elevation0 = byteArrayOneSec[ dataIndex++ ] * 256 + byteArrayOneSec[ dataIndex++ ];
+				elevation0 = 256 * byteArrayOneSec[ dataIndex++ ] + byteArrayOneSec[ dataIndex++ ];
 
 				elevation = elevation0 < 32768 ? elevation0 : elevation0 - 65535;
 
