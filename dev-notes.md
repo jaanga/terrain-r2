@@ -1,8 +1,17 @@
 Dev Notes
 ===
 
-2015-04-15 ~ Theo
 
+2015-04-16 ~ Theo
+
+3D Globe low has textures ~ and they zing!
+
+Built capture TMS images utility. All good but images needs mercatorization ~ wil need anither day or so to do
+
+lots of time on read me files, fixing links etc
+
+
+2015-04-15 ~ Theo
 
 3D Globe now has two forms:
 
