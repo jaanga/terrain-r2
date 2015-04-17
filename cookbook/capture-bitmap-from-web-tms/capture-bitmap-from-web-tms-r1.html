@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang=en >
+<head>
+<title>capture-bitmap-from-web-tms-r1</title>
+<meta charset=utf-8 />
+</head>
+<body>
+<script>
+
+// needs turning into a Mercator projection
+// max image size seems to be 1024x1024
+// need to save to four images then combine and re-save as one image
+
+	var size = 1024;
+	var zoom = 4;
+
+	document.body.style.cssText = ' font: bold 12pt monospace; ';
+
+	var info = document.body.appendChild( document.createElement( 'div' ) );
+	info.innerHTML = '<a href="" ><h1>' + document.title + '</h1></a>' +
+		'<div id=msg1 ></div>' +
+		'<p>TMS server: <select id=selMap onchange=setTextureMap() /></select></p>' +
+		'<p><a id=download href=# onclick=downloadIt(); >Download as image</a></p>' +
+	'';
+
+	getTextureMaps();
+
+
+	function getTextureMaps() {
+
+		mapTypes = [
+
+			['Select a server','http://mt1.google.com/vt/x='],
+			['Google Maps','http://mt1.google.com/vt/x='],
+			['Google Maps Terrain','http://mt1.google.com/vt/lyrs=t&x='],
+			['Google Maps Satellite','http://mt1.google.com/vt/lyrs=s&x='],
+			['Google Maps Hybrid','http://mt1.google.com/vt/lyrs=y&x='],
+			['Open Street Map','http://tile.openstreetmap.org/'],
+			['Open Cycle Map', 'http://tile.opencyclemap.org/cycle/'],
+			['MapQuest OSM', 'http://otile3.mqcdn.com/tiles/1.0.0/osm/'],
+			['MapQuest Satellite', 'http://otile3.mqcdn.com/tiles/1.0.0/sat/'],
+			['Stamen terrain background','http://tile.stamen.com/terrain-background/']
+
+		];
+
+		for ( var i = 0; i < mapTypes.length; i++ ) {
+
+			parent.selMap.appendChild( document.createElement( 'option' ) );
+			parent.selMap.children[ i ].text = mapTypes[ i ][ 0 ];
+
+		}
+
+	}
+
+
+	function setTextureMap() {
+
+		if ( parent.selMap.selectedIndex > 0 && parent.selMap.selectedIndex < 10 ){
+
+			var dir = mapTypes[ parent.selMap.selectedIndex ][ 1 ]; // 'http://b.tile.openstreetmap.org/';
+			var count = 0;
+
+			tiles = Math.pow( 2, zoom );
+			var tile = size / tiles;
+
+			canvasMap = document.createElement( 'canvas' );
+			canvasMap = document.body.appendChild( document.createElement( 'canvas' ) );
+			canvasMap.style.cssText = 'border: 1px solid gray; position: absolute; top: 0; z-index:-10;';
+
+			canvasMap.width = size;
+			canvasMap.height = 0.5 * size;
+			var contextMap = canvasMap.getContext( '2d' );
+
+			for ( var x = 0; x < tiles; x++ ) {
+
+				for ( var y = 0; y < tiles; y++ ) {
+
+					if ( parent.selMap.selectedIndex < 5 ) {
+
+						loadImage( x + '&y=' + y + '&z=' + zoom , tile * x, 0.5 * tile * y );
+
+					} else {
+
+						loadImage( zoom + '/' + x + '/' + y + '.png',  x * tile, 0.5 * y * tile );
+
+					}
+
+				}
+
+			}
+
+			function loadImage( fileName, x, y ) {
+
+				var img = document.createElement( 'img' );
+				img.crossOrigin = 'Anonymous';
+				img.src = dir + fileName;
+
+				img.onload = function(){
+
+					contextMap.drawImage( img, 0, 0, 256, 256, x, y, tile, 0.5 * tile );
+
+				}
+
+			}
+
+		} else {
+
+		}
+
+	}
+
+	function downloadIt() {
+
+//		var name = file.name.replace(/\.html/,'-') + imageSize.replace( / /gi,'' ) + '.png';
+
+//		var name = image.src;
+//		name = name.substr( 1 + name.lastIndexOf( '/' ) );
+//		name = name.replace(/\.jpg/,'-') + image.width + 'x'+ image.height + '.png';
+
+		var c2du = canvasMap.toDataURL(); 
+
+		download.download = 'world-map.png';
+
+		download.href = c2du;
+
+	}
+
+</script>
+</body>
+</html>
