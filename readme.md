@@ -1,18 +1,22 @@
-Jaanga Terrain Read Me
+Jaanga Terrain R2 Read Me
 ===
 <span style=display:none; >[View as web page]( http://jaanga.github.io/terrain-r2/terrain.html "view the files as apps." ) <input value="<< You are here" size=15 style="font:bold 11pt monospace;border-width:0;" ></span>  
 
 
 Go straight to the [\*fun parts\*]( http://jaanga.github.io/terrain-srtm30-plus-viewers/terrain-srtm30-plus-viewers.html ). 
-Or to the [\*bizarre\*]( http://jaanga.github.io/terrain-usgs-viewers/png-usgs-viewer-3d-hello-world/r1/png-usgs-viewer-3d-hello-world.html )
+Or to the [\*bizarre\*]( http://jaanga.github.io/terrain-usgs-viewers/png-usgs-viewer-3d-hello-world/r1/png-usgs-viewer-3d-hello-world.html ).
+Or to a [work-in-progress]( http://jaanga.github.io/terrain-usgs-viewers/png-usgs-viewer-3d-hello-world/r2/png-usgs-viewer-3d-hello-world.html )
 
 Jaanga Terrain is in the process of being completely updated.
 
-Currently this release supplies 30 second ( 1 km ) [SRTM]( http://en.wikipedia.org/wiki/Shuttle_Radar_Topography_Mission ) data and data viewers. 
+Currently this release supplies data from two sources:
+
+* 30 second ( 1 km ) [SRTM]( http://en.wikipedia.org/wiki/Shuttle_Radar_Topography_Mission ) data and data viewers. 
+* 1 second ( 30m ) [USGS]( http://ned.usgs.gov/ )
+
 
 All data is presented in the form of [heightmaps]( http://en.wikipedia.org/wiki/Heightmap ) saved as PNG files.
 
-1 second / 30 meter data is in the works and is just starting to appear here.
 
 <!--
 
@@ -38,7 +42,7 @@ To provide the background and details and instructions so that you can do this t
 ### Vision  
 <!--  a descriptive picture of a desired future state -->
 To enable people who are interested in cartography and geography and are not programmers but have some understanding of some aspects of coding
-to develop news ways of using 3D mapping data and explore news ways of visualizing that data
+to develop news ways of using 3D mapping data and explore news ways of visualizing that data.
 
 ## Access to Data
 
@@ -150,6 +154,3 @@ copyright &copy; 2015 Jaanga authors ~
 All work herein is under the [MIT License]( http://jaanga.github.io/libs/jaanga-copyright-and-mit-license.md )
 
 This repository contains files that are at an early and volatile stage. Not all licensing requirements may have been fully met let alone identified. It is the intension of the authors to play fair and all such requirements will either be met or the feature in question will turned off.
-
-
-## Change Log

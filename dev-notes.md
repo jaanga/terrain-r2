@@ -1,6 +1,22 @@
 Dev Notes
 ===
 
+2015-04-17 Theo
+
+zoom level 10 tile covers how many lon degrees?
+0.3515625
+
+zoom level 12
+0.087890625
+3601 * 0.087890625 = 316.494140625 pixels
+
+zoom level 13
+0.0439453125
+3601 * 0.0439453125 = 158.2470703125 pixels
+
+19:31 ~ USGS 3D unFlatland is cooking! Most issues dealt with. Yay! 
+
+
 
 2015-04-16 ~ Theo
 
