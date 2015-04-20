@@ -79,6 +79,21 @@ Once finished, upload your scripts to the gh-pages Jaanga Terrain repository whe
 Of course, if you with you can fork or download a zip file with the entire Jaanga Terrain data set. 
 It's all open data.
 
+## File Structure
+The demos are generally built up from three files:
+
+* file-name.html
+	* The container that reads the content file and the menu file
+	* Could be built using jQuery or any other UI library
+* file-name-menu.md
+	* Menu file created using Markdown syntax
+* template-file-name.html
+	* Standalone file to be loaded within an iframe
+	* Loads, contains and process all 3D interaction
+	* Completely workable when not in an iframe
+	* Enables two-communication with parent when within an iframe
+
+
 ## Acknowledgements
 
 Much of the data used in Jaanga Terrain started life aboard the International Space Station 
