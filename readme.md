@@ -17,17 +17,7 @@ Currently this release supplies data from two sources:
 
 All data is presented in the form of [heightmaps]( http://en.wikipedia.org/wiki/Heightmap ) saved as PNG files.
 
-
-<!--
-
-### Live Demo
-
-<iframe src="http://XXX.github.io/XXX/latest/index.html" width=100% height=500px class='overview' >
-There is an `iframe` here. It is not visible when viewed on github.com/XXX. To view, click 'Web page view' just above.
-</iframe>
-_XXX - latest revision_ / [Full Screen]( http://XXX.github.io/latest/index.html)
-
--->
+Want a new feature? Have an issue? Send a message to jaanga [at] googlegroups [dot] com
 
 ## Concept
 
