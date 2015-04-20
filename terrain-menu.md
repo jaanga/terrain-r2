@@ -1,11 +1,9 @@
 [Jaanga]( ../index.html ) &raquo;
 [Jaanga Terrain]( terrain.html )
 ===
-<!--
-[GitHub web page]( http://jaanga.github.io/terrain-r2/terrain.html "view the files as apps." ) <input value="<< You are here" size=15 style="font:bold 11pt monospace;border-width:0;" >  
--->
 
 [Jaanga Terrain Read Me]( #readme.md# )  
+[FAQ]( #faq.md# )  
 [Cookbook Read Me]( #./cookbook/readme.md# )  
 [Copyright & License]( #jaanga-copyright-and-mit-license.md# )  
 

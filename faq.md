@@ -3,7 +3,7 @@ Frequently Asked Questions
 
 ## Questions related to the [Jaanga Terrain 3D Globe]( http://jaanga.github.io/terrain-srtm30-plus-viewers/png-tms7-viewer-3d-globe-low/r3/png-tms7-viewer-3d-globe-low.html )
 
-### Why does turning on auto-rotation cause the globe to shimmer?
+### _Why does turning on auto-rotation cause the globe to shimmer?_
 
 The shimmering occurs when two or more faces are co-planar and one on top of the other. 
 As each new frame of animation is generated the faces have to be redrawn.
@@ -20,17 +20,17 @@ But a good number especially near the seashore are close enough to sea level tha
 A technical term for is that this is a [race condition]
 
 
-### Why are Greenland and Antarctica bright red?
+### _Why are Greenland and Antarctica bright red?_
 
 This is a demonstration of the effects of global warming.
 
 Just joking.
 
-It's just the way heights are indicated on the ![Wikipedia Elevation]( http://commons.wikimedia.org/wiki/File:Elevation.jpg ) image. 
+It's just the way heights are indicated on the [Wikipedia Elevation]( http://commons.wikimedia.org/wiki/File:Elevation.jpg ) image. 
 See the legend at the bottom of the page.
 
 
-### Why is there a 'hole' at the north pole, and a similar one at the south pole? 
+### _Why is there a 'hole' at the north pole, and a similar one at the south pole?_
 
 The map overlays to that are sourced from Open Street Maps, MapQuest, Google and others are all based on the [Tile Map Service (TMS)]( http://en.wikipedia.org/wiki/Tile_Map_Service ) format.
 
@@ -39,7 +39,7 @@ A limitation of TMS is that the maps extend only up to 85.0511 degrees north and
 The SRTM30 Plus data actually extends all the way to the North and South Poles, but the truncating very much simplifies the code.
  
 
-### What is the meaning of the bright blue strips? For example, there is one large block east of France, north of Spain.
+### _What is the meaning of the bright blue strips? For example, there is one large block east of France, north of Spain._
 
 Cartography uses many different [map projection]( http://en.wikipedia.org/wiki/Map_projection ) systems
 The color strips occur when there is a discrepancy between maps of different projection systems being overlaid. 
