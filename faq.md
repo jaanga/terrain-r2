@@ -17,7 +17,7 @@ The second mesh is a sphere where each vertex is adjusted for height.
 Most vertices in the second mesh are well above or below the 6371 radius.
 But a good number especially near the seashore are close enough to sea level that shimmering occurs
 
-A technical term for is that this is a [race condition]
+A technical term for this issue is [race condition]( http://en.wikipedia.org/wiki/Race_condition ).
 
 
 ### _Why are Greenland and Antarctica bright red?_
@@ -30,7 +30,7 @@ It's just the way heights are indicated on the [Wikipedia Elevation]( http://com
 See the legend at the bottom of the page.
 
 
-### _Why is there a 'hole' at the north pole, and a similar one at the south pole?_
+### _Why is there a 'hole' at the North Pole, and a similar one at the South Pole?_
 
 The map overlays to that are sourced from Open Street Maps, MapQuest, Google and others are all based on the [Tile Map Service (TMS)]( http://en.wikipedia.org/wiki/Tile_Map_Service ) format.
 
