@@ -48,4 +48,13 @@ Thus map overlay projection might say this point is deep down in the ocean and s
 You end up seeing deep ocean blue stick way above sea level.
 Future releases of the globe script may well end up improving or even removing these discrepancies. 
 
+### _Why is the full 3D Globe low resolution only?_ 
+
+The current 3D Globe is built with data from a height map of just 512 x 256 pixels.
+This is quite small compare to the full SRTM30 Plusa data set of 43,200 x 21,600 pixels.
+The impediment to displaying more data is the state of processing 3D data.
+Currently asking a computer to process, say, 250,000 faces at 60 frames per second using the Three.js library seems to be about the limit.
+
  
+
+
