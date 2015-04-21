@@ -3,15 +3,18 @@
 	var fs = require('fs');
 	var Jimp = require( 'jimp' );
 
-//	var runType = 'north';
+	var runType = 'north';
 //	var runType = 'south';
-	var runType = 'test';
+//	var runType = 'test';
 
-	var latTest = 37.796; // sf
-	var lonTest = -122.398; //-122.398; // sf
+	var latDefault = 37.796; // sf
+	var lonDefault = -122.398; //-122.398; // sf
 
 	var zoomText = '7plus'; // '7plus';
 	var zoom = parseInt( zoomText, 10 );
+
+	var tmsX;
+	var tmsY;
 
 	var fileName;
 	var TMS7plusX;
@@ -31,7 +34,7 @@
 	var dataBytesPerRow = 2 * columns; // 2 bytes per column
 	var colsPerTMS = Math.floor( columns / Math.pow( 2, zoom ) );
 
-// lat & lon
+// lat/lon
 	var latStart;
 	var latEnd;
 
@@ -40,14 +43,9 @@
 
 // current run stats
 	var startTime = Date.now();
-	var byteArray;
-
-	var max = 0;
-	var min = 0;
 
 	var count = 0;
-	var countWild = 0;
-	var countErrant = 0;
+	var byteArray;
 
 	init();
 
@@ -79,8 +77,8 @@
 
 			fileName = 'c:/temp/topo30/topo1.gsd';
 
-			var tmsX = lon2tile ( lonTest, zoom );
-			var tmsY = lat2tile ( latTest, zoom );
+			tmsX = lon2tile ( lonDefault, zoom );
+			tmsY = lat2tile ( latDefault, zoom );
 
 			TMS7plusX = tmsX; // 20 sf
 			TMS7plusY = tmsY; // 49 sf
@@ -93,12 +91,10 @@
 
 		}
 
+
 console.log( '\nfileName', fileName );
 console.log( 'colsPerTMS', colsPerTMS );
-
-// explanation of how this works
-// actual colsPerTMS may end up a real number but colsPerTMS is an integer obtained using Math.floor.
-// adding half the columns floored and another half rounded up should equal width of height map...
+// explain how this works
 console.log( 'column check', ( 32 * colsPerTMS ) + ( 32 * ( colsPerTMS + 1 ) ) );
 
 		fs.readFile( fileName, callbackReadFile );
@@ -116,8 +112,8 @@ console.log( 'column check', ( 32 * colsPerTMS ) + ( 32 * ( colsPerTMS + 1 ) ) )
 		byteArray = buffer;  // make global
 
 console.log( '\nfile loaded - byteArray.length', byteArray.length );
-console.log( 'zoom', zoom, 'runType', runType, 'script time start', Date.now() - startTime );
 
+//		if ( runType !== 'test' && !fs.existsSync( outputDir + TMS7plusX ) ) {
 		if ( !fs.existsSync( outputDir + TMS7plusX ) ) {
 
 			fs.mkdirSync( outputDir + TMS7plusX );   
@@ -125,6 +121,8 @@ console.log( 'zoom', zoom, 'runType', runType, 'script time start', Date.now() -
 		}
 
 		processTiles();
+
+console.log( 'zoom', zoom, 'runType', runType, 'script time start', Date.now() - startTime );
 
 	}
 
@@ -143,7 +141,7 @@ console.log( 'zoom', zoom, 'runType', runType, 'script time start', Date.now() -
 
 			TMS7plusY = TMS7plusYMin;
 
-			if ( !fs.existsSync( outputDir + TMS7plusX ) ) {
+			if ( runType !== 'test' && !fs.existsSync( outputDir + TMS7plusX ) ) {
 
 				fs.mkdirSync( outputDir + TMS7plusX );   
 
@@ -153,14 +151,7 @@ console.log( 'zoom', zoom, 'runType', runType, 'script time start', Date.now() -
 
 		} else {
 
-console.log( '\nfile loaded - byteArray.length', byteArray.length );
-console.log( 'zoom', zoom, 'runType', runType );
-
 console.log( '\n\nFinish script time', Date.now() - startTime );
-//console.log( '\nmin', min, 'max', max  );
-//console.log( 'countWild', countWild  );
-//console.log( 'countErrant', countErrant  );
-//console.log( png.slice( 0, 100 ) );
 
 		}
 
@@ -190,6 +181,11 @@ console.log( '\n\nFinish script time', Date.now() - startTime );
 		var elevations = [];
 		var elevation0, elevation;
 
+		var max = 0;
+		var min = 0;
+
+		countWild = 0;
+		countErrant = 0;
 /*
 		columnEnd = columns + ( Math.floor( 120 * lonEnd ) );
 
@@ -240,17 +236,37 @@ console.log( 'bytes', 2 * colsPerTMS * rowsPerTMS );
 			for ( var pngIndex = 0, cropIndex = 0; pngIndex < png.length; pngIndex ) {
 
 				elevation0 = 256 * cropFile[ cropIndex++ ] + cropFile[ cropIndex++ ];
-				elevation = elevation0 < 32767 ? elevation0 : elevation0 - 65536;
+
+				if ( elevation0 === 65535 || elevation0 === 32768 ) { 
+
+					elevation0 = 0;
+					countWild++;
+
+				}
+
+				elevation = elevation0 < 32768 ? elevation0 : elevation0 - 65535;
+
+				if ( elevation < -11000 || elevation > 9000 )  {
+
+					countErrant++;
+
+				}
 
 				min = elevation < min ? elevation : min;
 				max = elevation > max ? elevation : max;
 
-				png[ pngIndex++ ] = elevation & 0x0000ff;
-				png[ pngIndex++ ] = ( elevation & 0x00ff00 ) >> 8;
-				png[ pngIndex++ ] = ( elevation & 0xff0000 ) >> 16;
+				png[ pngIndex++ ] = 1 + elevation & 0x0000ff;
+				png[ pngIndex++ ] = 1 + ( elevation & 0x00ff00 ) >> 8;
+				png[ pngIndex++ ] = 1 + ( elevation & 0xff0000 ) >> 16;
 				png[ pngIndex++ ] = 255;
 
 			}
+/*
+console.log( '\nmin', min, 'max', max  );
+console.log( 'countWild', countWild  );
+console.log( 'countErrant', countErrant  );
+//console.log( png.slice( 0, 100 ) );
+*/
 
 			if ( zoomText !== '7plus' ) {
 
@@ -268,7 +284,7 @@ console.log( 'bytes', 2 * colsPerTMS * rowsPerTMS );
 
 process.stdout.write('\033c');
 console.log( 'tile', tileX, tileY, count );
-//console.log( 'cropFile', cropFile.length / 2 );
+//console.log( 'tile time', Date.now() - startTime );
 
 			processTiles();
 

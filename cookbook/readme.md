@@ -9,9 +9,9 @@ This section describes JavaScript and [Node.js]( http://nodejs.org ) files used 
 
 ## Generally
 
-Current development and testing based on Windows 8.1 and Chrome. Files edited using Notepad++.
+Current development and testing based on Windows 8.1 and the Gogle Chrome browser. Files are edited using Notepad++.
 
-Scripts appear to work on FireFox and IE on Windows, but not thoroughly investigated
+Scripts appear to work on FireFox and IE on Windows, but operation on these browsers is not yet thoroughly investigated on a regular basis.
 
 Scripts appear to work on Google Nexus 6 and iPhone 6.
 
@@ -25,15 +25,15 @@ Clicking the 'topo30' file causes a dialog box to appear and the file may be sav
 
 
 ### Reducing File Size
-The size of the topo30 file is 1.7 gigabytes.
+The size of the SRTM30 Plus topo30 file is 1.7 gigabytes.
 
 Much work on the file is to be carried out using node.js.
 
-Default Node has a file size limitation of 1 gigabyte.
+Default Node has a file size read/write limitation of 1 gigabyte.
 
 The available options are to recompile Node with a higher file size limit or to split the file into smaller pieces.
 
-Given our level of competence, we choose the latter.
+Given our level of competence, we choose the latter option.
 
 Google provided a list of Windows utilities to split files into smaller chunks.
 
@@ -79,20 +79,21 @@ In any case, the script only takes a matter of minutes to complete so speed is n
 
 We looked at PNGJS, LWIP ad JIMP.
 
-PNGJS creates and allows pixels edits but does not resize.
-LWIP editing pixes becomes a callback hell.
-JIMP (based on PNGJS ) enables resizing.
+* PNGJS edits existing files, creates new files and allows pixels edits but does not resize.
+* LWIP enab;es many things but editing pixels becomes a callback hell.
+* JIMP (based on PNGJS ) allows editing of existing files, editing of pixels and enables resizing (but not creating new files).
 
+Thus we are currently using JIMP and every time a new file is needed a blank file is opened and resized.
 
- 
+### Parsing Data Files
 
+The current file doing most of the heavy lifting is here:
 
+Source code: [node-jimp-topo30-to-png-tms-7plus]( https://github.com/jaanga/terrain-r2/tree/gh-pages/cookbook/node-jimp-topo30-to-png-tms-7plus )
 
- 
+This script is very much a work-in-progress. For details please see is read me file.
 
- 
-
-
+[node-jimp-topo30-to-png-tms-7plus Read Me]( http://jaanga.github.io/terrain-r2/terrain.html#./cookbook/node-jimp-topo30-to-png-tms-7plus/readme.md# )
 
 
 

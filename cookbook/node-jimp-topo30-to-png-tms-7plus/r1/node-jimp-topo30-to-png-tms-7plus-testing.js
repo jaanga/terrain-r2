@@ -93,6 +93,7 @@
 
 		}
 
+
 console.log( '\nfileName', fileName );
 console.log( 'colsPerTMS', colsPerTMS );
 
@@ -157,9 +158,9 @@ console.log( '\nfile loaded - byteArray.length', byteArray.length );
 console.log( 'zoom', zoom, 'runType', runType );
 
 console.log( '\n\nFinish script time', Date.now() - startTime );
-//console.log( '\nmin', min, 'max', max  );
-//console.log( 'countWild', countWild  );
-//console.log( 'countErrant', countErrant  );
+console.log( '\nmin', min, 'max', max  );
+console.log( 'countWild', countWild  );
+console.log( 'countErrant', countErrant  );
 //console.log( png.slice( 0, 100 ) );
 
 		}
@@ -229,24 +230,53 @@ console.log( 'bytes', 2 * colsPerTMS * rowsPerTMS );
 
 		}
 
+var t1 = 0; 
+var t2 = 0; 
+var t3 = 0; 
+
+var t1c = 0; 
+var t2c = 0; 
+var t3c = 0; 
+
 		var image = new Jimp( '../../10x10.png', function () {
 
 			this.resize( colsPerTMS, rowsPerTMS );
 
 			png = this.bitmap.data;
 
+
+
 			dataIndex = 0;
 
 			for ( var pngIndex = 0, cropIndex = 0; pngIndex < png.length; pngIndex ) {
 
 				elevation0 = 256 * cropFile[ cropIndex++ ] + cropFile[ cropIndex++ ];
-				elevation = elevation0 < 32767 ? elevation0 : elevation0 - 65536;
+
+				elevation = elevation0 < 32767 ? elevation0 : elevation0 - 65535;
 
 				min = elevation < min ? elevation : min;
 				max = elevation > max ? elevation : max;
 
+t1 = elevation & 0x0000ff;
+if ( t1 === 0 /* || t1 === 255 */ ) {
+	t1c++;
+}
 				png[ pngIndex++ ] = elevation & 0x0000ff;
+
+t2 = 1 + ( elevation & 0x00ff00 ) >> 8;
+if ( t2 === 0 && t1 === 0  /* || t2 === 255 */ ) {
+
+	t2c++;
+
+}
+
 				png[ pngIndex++ ] = ( elevation & 0x00ff00 ) >> 8;
+
+t3 = ( elevation & 0xff0000 ) >> 16;
+if ( t3 === 255 && t2 === 255 && t1 === 10 /* || t3 === 255 */ )  {
+	t3c++;
+}
+
 				png[ pngIndex++ ] = ( elevation & 0xff0000 ) >> 16;
 				png[ pngIndex++ ] = 255;
 
@@ -266,10 +296,12 @@ console.log( 'bytes', 2 * colsPerTMS * rowsPerTMS );
 
 			count++;
 
-process.stdout.write('\033c');
+//process.stdout.write('\033c');
 console.log( 'tile', tileX, tileY, count );
-//console.log( 'cropFile', cropFile.length / 2 );
-
+console.log( 'cropFile', cropFile.length / 2 );
+console.log( 't1c', t1c );
+console.log( 't2c', t2c );
+console.log( 't3c', t3c );
 			processTiles();
 
 		}
