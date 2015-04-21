@@ -23,7 +23,7 @@
 	var outputDir;
 
 // could calculate this from file size
-	var dataPointsPerDegree = 120;
+	var dataPointsPerDegree = 120; // 1201 // 3601 // adjust as required
 
 	var rows = 180 * dataPointsPerDegree / 2; // only half the world map
 	var columns = 360 * dataPointsPerDegree; 
@@ -248,6 +248,7 @@ console.log( 'bytes', 2 * colsPerTMS * rowsPerTMS );
 				png[ pngIndex++ ] = elevation & 0x0000ff;
 				png[ pngIndex++ ] = ( elevation & 0x00ff00 ) >> 8;
 				png[ pngIndex++ ] = ( elevation & 0xff0000 ) >> 16;
+
 				png[ pngIndex++ ] = 255;
 
 			}
