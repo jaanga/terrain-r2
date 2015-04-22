@@ -8,10 +8,12 @@
 	var latDefault = 60; // sf
 	var lonDefault = 006; // sf
 
-	var oneSecFileName = '../../../../terrain-plus/data-samples/usgs-srtm1-2-1/N37W121.hgt';
-	var oneSecFileName = 'C:/temp/de-ferranti/P32/N60E006.hgt';
+//	var oneSecFileName = '../../../../terrain-plus/data-samples/usgs-srtm1-2-1/N37W123.hgt';
+//	var oneSecFileName = 'c:/temp/de-ferranti/P32/N60E006.hgt';
+	var fileName = 'N37W123';
 
-	var outputDir = './';
+	var sourceDir = 'c:/temp/usgs/earth-explorer/';
+	var outputDir = 'c:/temp/usgs/earth-explorer/';
 	
 	var byteArrayOneSec;
 
@@ -30,7 +32,7 @@
 
 	function init() {
 
-		fs.readFile( oneSecFileName, callbackReadOneSec );
+		fs.readFile( sourceDir + fileName + '.hgt', callbackReadOneSec );
 
 	}
 
@@ -100,7 +102,7 @@ console.log( '\nfile loaded - byteArrayOneSec.length', byteArrayOneSec.length );
 
 			}
 
-			this.write( outputDir + 'N' + lat + 'E' + lon  + '.png', callbackWrite ) // save
+			this.write( outputDir + fileName + '.png', callbackWrite ) // save
 
 		});
 
