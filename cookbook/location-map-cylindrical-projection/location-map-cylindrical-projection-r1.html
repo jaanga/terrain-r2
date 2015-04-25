@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang=en >
+<head>
+<title>Location Map - Cylindrical Equidistant projection</title>
+<meta charset=utf-8 />
+</head>
+<body>
+<script>
+
+	var lat = 38;
+	var lon = -123;
+
+// http://commons.wikimedia.org/wiki/File:Elevation.jpg
+// Elevation.jpg is a straight projection - a Cylindrical Equidistant projection 
+	var fileName = '../../images/Elevation.jpg';
+
+	var size = 720;
+
+	var canvas, context, image;
+	var d2r = Math.PI / 180;
+
+	init();
+
+	function init() {
+
+		document.body.style.cssText = ' font: bold 12pt monospace; ';
+
+		var info = document.body.appendChild( document.createElement( 'div' ) );
+		info.innerHTML = '<a href="" ><h1>' + document.title + '</h1></a>' +
+/*
+			'<p><select id=selPlace ></select></p>' +
+			'<p id=locationMap>' +
+				'Latitude: <select id=selLat onchange=updateParameters(); ></select>  ' +
+				'Longitude: <select id=selLon onchange=updateParameters(); ></select>' +
+			'</p><p>' +
+				'TileX: <select id=selTileX onchange=updateTileParameters(); ></select> ' +
+				'TileY: <select id=selTileY onchange=updateTileParameters(); ></select> ' +
+			'</p>' +
+*/
+			'<div id=msg1 ></div>' +
+		'';
+
+//		addGazetteer();
+//		addLocationOptions();
+		addLocationMap();
+
+	}
+
+	function addLocationMap() {
+
+		canvas = document.body.appendChild( document.createElement( 'canvas' ) );
+		canvas.width = 2 * size
+		canvas.height = size;
+		canvas.style.cssText = 'border: 1px solid red; ';
+		context = canvas.getContext( '2d' );
+
+		image = document.createElement( 'img' );
+//		document.body.appendChild( image );
+		image.src = fileName;
+
+		image.onload = function(){
+
+			context.drawImage( image, 0, 0, image.width, image.height, 0, 0, 2 * size, size );
+			imageLocation = context.getImageData( 0, 0, size, size );
+
+			addAsset( lat, lon );
+		}
+
+	}
+
+
+	function addAsset ( lat, lon ) {
+
+		pixelsPerDegreeLat = size / 180;
+		pixelsPerDegreeLon = 2 * size / 360;
+
+		var left = lon * pixelsPerDegreeLon + size;
+		var top = 360 - lat * pixelsPerDegreeLat; 
+		var width = 2 * size / 360;
+		var height = 4;
+
+//		context.clearRect( 0, 0, 2 * size, size );
+
+		context.beginPath();
+
+//		context.drawImage( image, 0, 0, image.width, image.height, 0, 0, 2 * size, size  );
+
+		context.fillStyle =  'magenta';
+		context.globalAlpha = 0.7;
+		context.fillRect( left, top, width , height );
+
+		context.closePath();
+
+		msg1.innerHTML = 'Lat:' + lat + ' Lon:' + lon;
+
+
+	}
+
+
+</script>
+</body>
+</html>

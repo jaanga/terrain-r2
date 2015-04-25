@@ -1,6 +1,44 @@
 Dev Notes
 ===
 
+2015-04-23 ~ Theo
+
+360 x 180 = 64800 files!
+
+Too many for me to manage.
+Need simple tools for peep like me.
+want to cover world
+
+30 second files for whole world in 10 x 10 grid = 640 files
+
+1 second file names in array.
+
+Say 10,000+ of them.
+Keep list in csv file
+nxxwxxx,path
+if found, use 1 second or best re available else use 30 second
+ 
+
+
+2015-04-23 ~ Theo
+
+upcoming
+
+build mode app to see what de Ferranti data needs to be updated << done
+
+email to scripps academia
+
+look into 1/3 second data
+look into mass download of 1 second data
+
+usgs 1second r2
+
+* 4 google map tiles
+* fix navigation
+
+until get help from geoff on errors, keep prepping
+
+
 2015-04-17 Theo
 
 zoom level 10 tile covers how many lon degrees?

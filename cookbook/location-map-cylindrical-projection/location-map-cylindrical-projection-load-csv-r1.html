@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang=en >
+<head>
+<title>Location Map - Cylindrical Equidistant projection - Load CSV</title>
+<meta charset=utf-8 />
+</head>
+<body>
+<script>
+
+	var lat = 38;
+	var lon = -123;
+
+// http://commons.wikimedia.org/wiki/File:Elevation.jpg
+// Elevation.jpg is a straight projection - a Cylindrical Equidistant projection 
+	var fileName = '../../images/Elevation.jpg';
+
+	var size = 720;
+
+	var canvas, context, image;
+	var d2r = Math.PI / 180;
+
+	init();
+
+	function init() {
+
+		document.body.style.cssText = ' font: bold 12pt monospace; ';
+
+		var info = document.body.appendChild( document.createElement( 'div' ) );
+		info.innerHTML = '<a href="" ><h1>' + document.title + '</h1></a>' +
+/*
+			'<p><select id=selPlace ></select></p>' +
+			'<p id=locationMap>' +
+				'Latitude: <select id=selLat onchange=updateParameters(); ></select>  ' +
+				'Longitude: <select id=selLon onchange=updateParameters(); ></select>' +
+			'</p><p>' +
+				'TileX: <select id=selTileX onchange=updateTileParameters(); ></select> ' +
+				'TileY: <select id=selTileY onchange=updateTileParameters(); ></select> ' +
+			'</p>' +
+*/
+			'<div id=msg1 ></div>' +
+		'';
+
+//		addGazetteer();
+//		addLocationOptions();
+		addLocationMap();
+
+	}
+
+	function addLocationMap() {
+
+		canvas = document.body.appendChild( document.createElement( 'canvas' ) );
+		canvas.width = 2 * size
+		canvas.height = size;
+		canvas.style.cssText = 'border: 1px solid red; ';
+		canvas.onclick = onLocationMapClick;
+		context = canvas.getContext( '2d' );
+
+		image = document.createElement( 'img' );
+//		document.body.appendChild( image );
+		image.src = fileName;
+
+		image.onload = function(){
+
+			context.drawImage( image, 0, 0, image.width, image.height, 0, 0, 2 * size, size );
+			imageLocation = context.getImageData( 0, 0, size, size );
+
+			getAssetCSV( 'C:/temp/de-ferranti/1degree/dir-zips.csv' );
+
+			getAssetCSV( 'C:/temp/usgs/04/dir-zips.csv' );
+
+			getAssetCSV( 'C:/temp/usgs/07/dir-zips-07.csv' );
+
+		}
+
+	}
+
+	function getAssetCSV( fileName ) {
+// http://www.golombek.com/locations.html
+
+		var data = requestAssetCSV( fileName );
+		var xmlHttp;
+
+		function requestAssetCSV( fileName ) {
+
+			xmlHttp = new XMLHttpRequest();
+			xmlHttp.open( 'GET', fileName, true );
+			xmlHttp.onreadystatechange = callbackAssetCSV;
+			xmlHttp.send( null );
+
+		}
+
+		function callbackAssetCSV() {
+
+			if ( xmlHttp.readyState != 4  ) { return; }
+
+			var response = xmlHttp.responseText;
+
+			lines = response.split(/\r\n|\n/);
+
+			for ( var i = 1, asset; i < lines.length; i++ ) {
+
+				asset = lines[ i ];
+
+				lat = parseInt( asset.substr( 1, 2 ), 10 );
+				lat = ( asset.substr( 0, 1 )  === 'N' ) ? lat : - lat;
+
+				lon = parseInt( asset.substr( 4 ), 10 );
+				lon = ( asset.substr( 3, 1 ) === 'E' ) ? lon: - lon;
+			
+				addAsset ( lat, lon );
+
+			}
+
+		}
+
+	}
+
+
+	function addAsset ( lat, lon ) {
+
+		pixelsPerDegreeLat = size / 180;
+		pixelsPerDegreeLon = 2 * size / 360;
+
+		var left = lon * pixelsPerDegreeLon + size;
+		var top = 360 - lat * pixelsPerDegreeLat; 
+		var width = 2 * size / 360;
+		var height = 4;
+
+//		context.clearRect( 0, 0, 2 * size, size );
+
+		context.beginPath();
+
+//		context.drawImage( image, 0, 0, image.width, image.height, 0, 0, 2 * size, size  );
+
+		context.fillStyle =  'magenta';
+		context.globalAlpha = 0.7;
+		context.fillRect( left, top, width , height );
+
+		context.closePath();
+
+		msg1.innerHTML = 'Lat:' + lat + ' Lon:' + lon;
+
+	}
+
+	function onLocationMapClick( e ) {
+
+		if ( e.pageX != undefined && e.pageY != undefined) {
+
+			var x = e.offsetX;
+			var y = e.offsetY;
+
+			pixelsPerDegreeLat = size / 180;
+			pixelsPerDegreeLon = 2 * size / 360;
+
+			var lat = 90 - y / pixelsPerDegreeLat;
+			latID = lon < 0 ? 'S' : 'N';
+			lat = ( '00' + Math.abs( lat ).toFixed( 0 ) ).substr( -2 );
+
+			var lon = x / pixelsPerDegreeLon - 180;
+			lonID = lon < 0 ? 'W' : 'E';
+			lon = ( '000' + Math.abs( lon ).toFixed( 0 ) ).substr( -3 );
+
+console.log( x, y, 'lat', lat, 'lon', lon );
+
+			app = '../../../terrain-usgs-viewers/hgt-zip-usgs-viewer-3d-hello-world/hgt-zip-usgs-viewer-3d-usgs-r1.html#';
+
+			txt = latID + lat + lonID + lon + '.hgt.zip' 
+			msg1.innerHTML = 'Lat:' + lat + ' Lon:' + lon + ' ' +
+				'<a href=' + app + txt + ' target="_blank">' + txt + '</a>' +
+			'';
+
+		}
+
+	}
+
+
+</script>
+</body>
+</html>
