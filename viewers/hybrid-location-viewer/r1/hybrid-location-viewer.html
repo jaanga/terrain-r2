@@ -16,7 +16,7 @@
 
 // http://commons.wikimedia.org/wiki/File:Elevation.jpg
 // Elevation.jpg is a straight projection - a Cylindrical Equidistant projection 
-	var fileName = '../../images/Elevation.jpg';
+	var fileName = '../../../images/Elevation.jpg';
 
 
 	var sourceDirs = [
@@ -78,11 +78,11 @@ console.log( 'jjj' );
 
 			context.drawImage( image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height );
 
-			getAssetCSV( 'C:/temp/de-ferranti/1degree/dir-zips.csv', 0 );
+			getAssetCSV( '../de-ferranti-zips.csv', 0 );
 
-			getAssetCSV( 'C:/temp/usgs/04/dir-zips.csv', 1 );
+			getAssetCSV( '../usgs-04-zips.csv', 1 );
 
-			getAssetCSV( 'C:/temp/usgs/07/dir-zips-07.csv', 2 );
+			getAssetCSV( '../usgs-07-zips.csv', 2 );
 
 		}
 
@@ -182,7 +182,7 @@ console.log( 'jjj' );
 //console.log( x, y, 'lat', latString, 'lon', lonString );
 
 
-			app = '../../../terrain-usgs-viewers/hgt-zip-usgs-viewer-3d-hello-world/hgt-zip-usgs-viewer-3d-usgs-r1.html';
+			app = 'http://jaanga.github.io/terrain-usgs-viewers/hgt-zip-usgs-viewer-3d-hello-world/hgt-zip-usgs-viewer-3d-usgs-r1.html';
 
 			txt = latID + latString + lonID + lonString;
 
@@ -194,7 +194,7 @@ console.log( 'jjj' );
 //					'<a href=' + app + txt + ' target="_blank">' + txt + '</a>' +
 				'';
 
-				app = '../../../terrain-srtm30-plus-viewers/png-tms7-viewer-3d-unflatland-features/r2/png-tms7-viewer-3d-unflatland.html#';
+				app = 'http://jaanga.github.io/terrain-srtm30-plus-viewers/png-tms7-viewer-3d-unflatland-features/r2/png-tms7-viewer-3d-unflatland.html#';
 
 				ifr = resetIframe( );
 
