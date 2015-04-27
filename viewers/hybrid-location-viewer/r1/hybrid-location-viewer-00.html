@@ -30,6 +30,8 @@
 
 	var sourceDir = '#' + sourceDirs[ 0 ];
 
+
+
 	var canvas, context, image;
 	var info;
 
@@ -44,7 +46,7 @@
 
 		info.innerHTML = '<a href="" ><h3>' + document.title + '</h3></a>' +
 			'<button onclick=slideMenu() >slide the menu</button>' +
-			'<div id=msg1 >Click anywhere on the map to go there. Then slide the menu to view. ~ Areas in magenta are 1 second data - other areas are 30 second data.</div>' +
+			'<div id=msg1 ></div>' +
 		'';
 
 //		addGazetteer();
@@ -87,8 +89,9 @@
 	}
 
 	function getAssetCSV( fileName, id ) {
+// http://www.golombek.com/locations.html
 
-		requestAssetCSV( fileName );
+		var data = requestAssetCSV( fileName );
 		var xmlHttp;
 
 		function requestAssetCSV( fileName ) {
@@ -108,7 +111,7 @@
 
 			lines = response.split(/\r\n|\n/);
 
-			for ( var i = 1, asset, lat, lon; i < lines.length; i++ ) {
+			for ( var i = 1, asset; i < lines.length; i++ ) {
 
 				asset = lines[ i ];
 
@@ -134,16 +137,24 @@
 
 	function addAsset ( lat, lon ) {
 
+
+
 		var left = lon * canvas.width / 360 + canvas.width / 2;
 		var top = canvas.height / 2 - lat * canvas.height / 180; 
 		var width = canvas.width / 360;
 		var height = canvas.height / 180;
 
-		context.fillStyle =  'rgba( 255, 0, 255, 0.7 )';
+		context.beginPath();
+
+		context.fillStyle =  'magenta';
+		context.globalAlpha = 0.7;
 		context.fillRect( left, top, width , height );
 
-	}
+		context.closePath();
 
+//		msg1.innerHTML = 'Lat:' + lat + ' Lon:' + lon;
+
+	}
 
 	function onLocationMapClick( e ) {
 
@@ -209,7 +220,7 @@ console.log( 'index', index );
 
 				ifr.src = app + sourceDir + txt + '.hgt.zip' ;
 
-				msg1.innerHTML = 'Lat:' + lat.toFixed( 0 ) + ' Lon:' + lon.toFixed( 0 ) + ' 1 Second file:' +
+				msg1.innerHTML = 'Lat:' + lat + ' Lon:' + lon + ' 1 Second file' +
 					'<a href=' + app + txt + ' target="_blank">' + txt + '</a>' +
 				'';
 
