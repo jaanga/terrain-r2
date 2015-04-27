@@ -7,7 +7,9 @@ Go straight to the [\*fun parts\*]( http://jaanga.github.io/terrain-srtm30-plus-
 Or to the [\*bizarre\*]( http://jaanga.github.io/terrain-usgs-viewers/png-usgs-viewer-3d-hello-world/r1/png-usgs-viewer-3d-hello-world.html ).
 Or to a [work-in-progress]( http://jaanga.github.io/terrain-usgs-viewers/png-usgs-viewer-3d-hello-world/r2/png-usgs-viewer-3d-hello-world.html )
 
+<!--
 Latest experiment: [Hybrid Location Viewer](  http://jaanga.github.io/terrain-r2/viewers/hybrid-location-viewer/r1/hybrid-location-viewer.html )
+-->
 
 Jaanga Terrain is in the process of being completely updated.
 
