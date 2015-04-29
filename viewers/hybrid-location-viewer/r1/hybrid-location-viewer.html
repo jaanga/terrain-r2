@@ -7,8 +7,8 @@
 <body>
 <script>
 
-	var lat = 38;
-	var lon = -123;
+	var lat; // = 38;
+	var lon; // = -123;
 
 	var assets = [];
 	var assetCount = 0;
@@ -37,12 +37,18 @@
 
 	function init() {
 
-		document.body.style.cssText = ' font: bold 12pt monospace; margin: 0; overflow: hidden;';
+		var css = document.head.appendChild( document.createElement('style') );
+		css.innerHTML ='body { font: 600 12pt monospace; margin: 0; overflow: hidden; }' +
+			'#i {text-decoration: none; }' +
+		'';
 
 		info = document.body.appendChild( document.createElement( 'div' ) );
 		info.style.cssText = 'background-color: #ccc; left: 0; position: absolute; ';
 
-		info.innerHTML = '<a href="" ><h3>' + document.title + '</h3></a>' +
+		info.innerHTML = '<h3>' +
+				'<a href="" >' + document.title + '</a> ~ ' +
+				'<a id=i href=https://github.com/jaanga/terrain-r2/tree/gh-pages/viewers/hybrid-location-viewer >&#x24D8;</a>' +
+			'</h3>' +
 			'<button onclick=slideMenu() >slide the menu</button>' +
 			'<div id=msg1 >Click anywhere on the map to go there. Then slide the menu to view. ~ Areas in magenta are 1 second data - other areas are 30 second data.</div>' +
 		'';
@@ -70,11 +76,15 @@
 
 		image = document.createElement( 'img' );
 //		document.body.appendChild( image );
+
 		image.src = fileName;
 
 		image.onload = function(){
 
 			context.drawImage( image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height );
+			context.fillStyle = 'rgba( 200, 200, 200, 0.4 )';
+
+			context.fillRect( 0, 0, canvas.width, canvas.height );
 
 			getAssetCSV( '../de-ferranti-zips.csv', 0 );
 
@@ -183,7 +193,7 @@
 
 			} else {
 
-console.log( 'index', index );
+// console.log( 'index', index );
 				if ( index < assetsID[ 0 ] ) {
 
 					sourceDir = sourceDirs[ 0 ]
