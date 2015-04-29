@@ -80,14 +80,15 @@
 
 			material = new THREE.MeshBasicMaterial( { vertexColors: THREE.VertexColors } );
 //			material = new THREE.MeshNormalMaterial( { shading: THREE.SmoothShading, side: 2 } );
+			terrainMesh.material.needsUpdate = true;
 
 			scene.remove( terrainMesh );
-
 			terrainMesh = new THREE.Mesh( geometry, material );
 			terrainMesh.scale.z = -1;
 			scene.add( terrainMesh );
 
-			terrainMesh.material.needsUpdate = true;
+			parent.inpEdges.checked = true;
+			setEdges();
 
 		} else if ( parent.selMap.selectedIndex > 1 && parent.selMap.selectedIndex < 11 ){
 
