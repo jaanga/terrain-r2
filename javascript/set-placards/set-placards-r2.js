@@ -34,8 +34,8 @@
 				ptX =  256 * ( lon - ulLon ) / dx  - 256 / 2;
 				ptY = 256 * ( ulLat - lat ) / dy - 256 / 2 ;
 
-//				alt = getAltitude( lat, lon );
-				alt = getAltitude( ptX, ptY );
+				alt = getAltitude( lat, lon );
+//				alt = getAltitude( ptX, ptY );
 
 //console.log( place[0], alt );
 
@@ -63,14 +63,13 @@
 	}
 
 
-//	function getAltitude( lat, lon ) {
-	function getAltitude( ptX, ptY ) {
+	function getAltitude( lat, lon ) {
 
-//		dx = (lrLon - ulLon);
-//		dy = (ulLat - lrLat);
+		dx = ( lrLon - ulLon );
+		dy = ( ulLat - lrLat );
 
-//		ptX = heightMap.width * ( lon - ulLon ) / dx;
-//		ptY = heightMap.height * ( ulLat - lat ) / dy;
+		ptX = heightMap.width * ( lon - ulLon ) / dx;
+		ptY = heightMap.height * ( ulLat - lat ) / dy;
 
 		p = contextHeightMap.getImageData( ptX, ptY, 1, 1 ).data;
 
@@ -78,9 +77,9 @@
 		contextHeightMap.strokeStyle =  '#ffff00';
 		contextHeightMap.strokeRect( ptX, ptY, 1, 1  );
 
-		elevation = p[ 0 ] + 256 * p[ 1 ] + 65536 * p[ 2 ] ;
+		elevation = p[ 0 ] + 256 * p[ 1 ]; //  + 65536 * p[ 2 ] ;
 
-		elevation = ( elevation < 32768 ) ? elevation : elevation - 16777215;
+		elevation = ( elevation < 32768 ) ? elevation : elevation - 65536; // 16777215;
 
 /*
 

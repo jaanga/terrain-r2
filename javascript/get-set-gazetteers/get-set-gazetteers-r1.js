@@ -1,5 +1,12 @@
+// Copyright 2015 Jaanga authors. MIT Licence
+
+// used by template-png-tms7-viewer-3d-unflatland.html
+
+
 	function getGazetteerGolembek() {
-// http://www.golombek.com/locations.html
+
+// Original data sourced from http://www.golombek.com/locations.html
+// Edits and additions by Jaanga authors
 
 //		var data = requestGazetteer( '../../../terrain-plus/gazetteer/places-2000.csv' );
 		var data = requestGazetteer( 'http://jaanga.github.io/terrain-plus/gazetteer/places-2000.csv' );
@@ -143,3 +150,4 @@
 		}
 
 	}
+
