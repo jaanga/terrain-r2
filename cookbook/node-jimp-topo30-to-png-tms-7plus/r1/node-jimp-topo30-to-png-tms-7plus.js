@@ -89,7 +89,7 @@
 			TMS7plusYMax = tmsY + 1;
 			TMS7plusYMin = 0;
 //			outputDir = './';
-			outputDir = 'c:/temp/srtm-png-tms-1-7-temp/'  + zoomText + '/';
+			outputDir = 'c:/temp/srtm-png-tms-1-7-temp/' ;//  + zoomText + '/';
 
 		}
 
@@ -237,18 +237,24 @@ console.log( 'bytes', 2 * colsPerTMS * rowsPerTMS );
 
 			dataIndex = 0;
 
-			for ( var pngIndex = 0, cropIndex = 0; pngIndex < png.length; pngIndex ) {
+			for ( var pngIndex = 0, cropIndex = 0; pngIndex < png.length; cropIndex += 2 ) {
 
-				elevation0 = 256 * cropFile[ cropIndex++ ] + cropFile[ cropIndex++ ];
-				elevation = elevation0 < 32767 ? elevation0 : elevation0 - 65536;
+				elevation0 = 256 * cropFile[ cropIndex ] + cropFile[ cropIndex + 1 ];
+				elevation = elevation0 < 32768 ? elevation0 : elevation0 - 65536;
 
 				min = elevation < min ? elevation : min;
 				max = elevation > max ? elevation : max;
 
+if ( cropFile[ cropIndex ] === 255 && cropFile[ cropIndex + 1] === 255 ) {
+
+	elevation = 0;
+//	count2++;
+
+}
+
 				png[ pngIndex++ ] = elevation & 0x0000ff;
 				png[ pngIndex++ ] = ( elevation & 0x00ff00 ) >> 8;
-				png[ pngIndex++ ] = ( elevation & 0xff0000 ) >> 16;
-
+				png[ pngIndex++ ] = 0; // ( elevation & 0xff0000 ) >> 16;
 				png[ pngIndex++ ] = 255;
 
 			}
@@ -267,8 +273,9 @@ console.log( 'bytes', 2 * colsPerTMS * rowsPerTMS );
 
 			count++;
 
-process.stdout.write('\033c');
+// process.stdout.write('\033c');
 console.log( 'tile', tileX, tileY, count );
+console.log( 'min', min, 'max', max );
 //console.log( 'cropFile', cropFile.length / 2 );
 
 			processTiles();

@@ -2,9 +2,9 @@
 
 	var fs = require('fs');
 
-	var fileName = '../../../../jaanga-terrain/terrain-plus/data-samples/srtm30-plus/w140n40.Bathymetry.srtm';
+//	var fileName = '../../../../jaanga-terrain/terrain-plus/data-samples/srtm30-plus/w140n40.Bathymetry.srtm';
 //	var fileName = 'C:/temp/de-ferranti/P32/N60E006.hgt';
-//	var fileName = 'c:/temp/topo30/topo1.gsd';
+	var fileName = 'c:/temp/topo30/topo1.gsd';
 //	var fileName = '../../../../jaanga-terrain/terrain-plus/data-samples/usgs-srtm1-2-1/N37W123.hgt';
 
 
@@ -54,9 +54,9 @@ console.log( 'byteArray.length', byteArray.length );
 		smallCount = 0;
 		bigCount = 0;
 
-		for ( var i = 0; i < byteArray.length; ) {
+		for ( var i = 0; i < byteArray.length; i += 2) {
 
-			elevation0 = byteArray[ i++ ] * 256 + byteArray[ i++ ];
+			elevation0 = 256 * byteArray[ i ] + byteArray[ i + 1 ];
 
 			if ( elevation0 < minRaw  ) {
 
