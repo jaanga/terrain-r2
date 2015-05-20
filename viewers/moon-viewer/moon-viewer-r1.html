@@ -10,6 +10,9 @@
 <script src = http://mrdoob.github.io/three.js/examples/js/controls/OrbitControls.js ></script>
 <script>
 
+	var imageName = '../../images/LALT_GGT_MAP.jpg';
+	var imageName = '../../images/ACopldB.jpg';
+
 	var scale = 15;
 	var heightMap;
 
@@ -51,12 +54,12 @@
 //		heightMap.style.cssText = 'position: absolute; top: 0; z-index: -1;';
 		heightMap.crossOrigin = 'Anonymous';
 		heightMap.onload = initCanvas;
-		heightMap.src =  '../../images/LALT_GGT_MAP.jpg';
+		heightMap.src = imageName;
 
 		geometry = new THREE.PlaneGeometry( 200, 200, 255, 255);
 		geometry.applyMatrix( new THREE.Matrix4().makeRotationX( -0.5 * Math.PI ) );
 		verts = geometry.vertices;
-		material = new THREE.MeshNormalMaterial( { shading: THREE.SmoothShading } );
+		material = new THREE.MeshNormalMaterial( { side: 2 } );
 		scale = 0.01 * scale;
 
 	}
@@ -77,6 +80,7 @@
 		mesh = new THREE.Mesh( geometry.clone(), material );
 		mesh.geometry.computeFaceNormals();
 		mesh.geometry.computeVertexNormals();
+//		mesh.scale.z = -1;
 		scene.add( mesh );
 
 	}
