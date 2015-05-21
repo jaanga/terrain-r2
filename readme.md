@@ -2,22 +2,28 @@
 
 Jaanga Terrain R2 Read Me
 ===
-<span style=display:none; >[View as web page]( http://jaanga.github.io/terrain-r2/terrain.html "view the files as apps." ) <input value="<< You are here" size=15 style="font:bold 11pt monospace;border-width:0;" ></span>  
+<span style=display:none; >[View as web page]( http://jaanga.github.io/terrain-r2/ "view the files as apps." ) <input value="<< You are here" size=15 style="font:bold 11pt monospace;border-width:0;" ></span>  
 
-Go straight to the [\*fun parts\*]( http://jaanga.github.io/terrain-srtm30-plus-viewers/terrain-srtm30-plus-viewers.html ). 
-
+Go straight to the [\*fun parts\*]( http://jaanga.github.io/terrain-srtm30-plus-viewers/ ). 
 
 Jaanga Terrain is in the process of being completely updated.
-
 
 Want a new feature? Have an issue? Send a message to jaanga [at] googlegroups [dot] com
 
 ## Contents
 
-* [Cookbook]( http://jaanga.github.io/terrain-r2/cookbook/ ) 
-* [Viewers]( http://jaanga.github.io/terrain-r2/viewers/ )
-* [Terrain SRTM30 Plus R2]( http://jaanga.github.io/terrain-srtm30-plus-r2/ )
+
+* [Viewers]( http://jaanga.github.io/terrain-r2/viewers/ ) << lots hapenning here
+* [Terrain SRTM30 Plus R2]( http://jaanga.github.io/terrain-srtm30-plus-r2/ ) << good place for overview
 * [Terrain USGS]( http://jaanga.github.io/terrain-usgs/ )
+* [Cookbook]( http://jaanga.github.io/terrain-r2/cookbook/ ) << techie bits
+
+Older repositories
+
+* [Terrain]( http://jaanga.github.io/terrain/ )
+* [Terrain Viewer]( http://jaanga.github.io/terrain-viewer/ )
+* [Terrain Plus]( http://jaanga.github.io/terrain-plus/ )
+* [Terrain SRTM30 Plus]( http://jaanga.github.io/terrain-srtm30-plus/ )
 
 
 ## Concept
