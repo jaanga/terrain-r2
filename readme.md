@@ -12,9 +12,8 @@ Want a new feature? Have an issue? Send a message to jaanga [at] googlegroups [d
 
 ## Contents
 
-
-* [Viewers]( http://jaanga.github.io/terrain-r2/viewers/ ) << lots hapenning here
 * [Terrain SRTM30 Plus R2]( http://jaanga.github.io/terrain-srtm30-plus-r2/ ) << good place for overview
+* [Viewers]( http://jaanga.github.io/terrain-r2/viewers/ ) << lots happening here
 * [Terrain USGS]( http://jaanga.github.io/terrain-usgs/ )
 * [Cookbook]( http://jaanga.github.io/terrain-r2/cookbook/ ) << techie bits
 
@@ -25,6 +24,7 @@ Older repositories
 * [Terrain Plus]( http://jaanga.github.io/terrain-plus/ )
 * [Terrain SRTM30 Plus]( http://jaanga.github.io/terrain-srtm30-plus/ )
 
+<input type=button value='View file as source code on GitHub' onclick=window.location.href='http://github.com/jaanga/terrain-r2/'; />
 
 ## Concept
 
