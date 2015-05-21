@@ -1,27 +1,24 @@
+[Jaanga]( http://jaanga.github.io ) &raquo;
+
 Jaanga Terrain R2 Read Me
 ===
 <span style=display:none; >[View as web page]( http://jaanga.github.io/terrain-r2/terrain.html "view the files as apps." ) <input value="<< You are here" size=15 style="font:bold 11pt monospace;border-width:0;" ></span>  
 
-
 Go straight to the [\*fun parts\*]( http://jaanga.github.io/terrain-srtm30-plus-viewers/terrain-srtm30-plus-viewers.html ). 
-Or to the [\*bizarre\*]( http://jaanga.github.io/terrain-usgs-viewers/png-usgs-viewer-3d-hello-world/ ).
-Or to a [work-in-progress]( http://jaanga.github.io/terrain-usgs-viewers/png-usgs-viewer-3d-hello-world/ )
 
-<!--
-Latest experiment: [Hybrid Location Viewer](  http://jaanga.github.io/terrain-r2/viewers/hybrid-location-viewer/r1/hybrid-location-viewer.html )
--->
 
 Jaanga Terrain is in the process of being completely updated.
 
-Currently this release supplies data from two sources:
-
-* 30 second ( 1 km ) [SRTM]( http://en.wikipedia.org/wiki/Shuttle_Radar_Topography_Mission ) data and data viewers. 
-* 1 second ( 30m ) [USGS]( http://ned.usgs.gov/ )
-
-
-All data is presented in the form of [heightmaps]( http://en.wikipedia.org/wiki/Heightmap ) saved as PNG files.
 
 Want a new feature? Have an issue? Send a message to jaanga [at] googlegroups [dot] com
+
+## Contents
+
+* [Cookbook]( http://jaanga.github.io/terrain-r2/cookbook/ ) 
+* [Viewers]( http://jaanga.github.io/terrain-r2/viewers/ )
+* [Terrain SRTM30 Plus R2]( http://jaanga.github.io/terrain-srtm30-plus-r2/ )
+* [Terrain USGS]( http://jaanga.github.io/terrain-usgs/ )
+
 
 ## Concept
 
@@ -32,6 +29,15 @@ To make 3D geophysical data observable in 3D with open access data and open sour
 To supply methods, tools, data and demos to help create lively 3D cartography - faster and more easily than ever before.
 
 To provide the background and details and instructions so that you can do this too. 
+
+## Notes
+Currently this release supplies data from two sources:
+
+* 30 second ( 1 km ) [SRTM]( http://en.wikipedia.org/wiki/Shuttle_Radar_Topography_Mission ) data and data viewers. 
+* 1 second ( 30m ) [USGS]( http://ned.usgs.gov/ )
+
+All data is presented in the form of [heightmaps]( http://en.wikipedia.org/wiki/Heightmap ) saved as PNG files.
+
 
 ### Vision  
 <!--  a descriptive picture of a desired future state -->
