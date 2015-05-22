@@ -1,14 +1,16 @@
+[Jaanga Terrain2]( http://jaanga.github.io/terrain-r2/index.html ) &raquo; [Viewers]( http://jaanga.github.io/terrain-r2/viewers/index.html )
+
 Jaanga Star Spotter Read Me
 ===
  
-<span style=display:none; >[View as web page]( http://jaanga.github.io/cookbook/star-spotter/index.html "view the files as apps." ) </span>  
+<span style=display:none; >[View as web page]( http://jaanga.github.io/terrain-r2/viewers/star-spotter/index.html "view the files as apps." ) </span>  
 
-<iframe src=http://jaanga.github.io/cookbook/star-spotter/latest/index.html width=640 height=480 ></iframe>  
-Fullscreen latest: [Jaanga Star Spotter]( http://jaanga.github.io/cookbook/star-spotter/latest/index.html )
+<iframe src=http://jaanga.github.io/terrain-r2/viewers/star-spotter/latest/index.html width=640 height=480 ></iframe>  
+Fullscreen latest: [Jaanga Star Spotter]( http://jaanga.github.io/terrain-r2/viewers/star-spotter/latest/index.html )
 
-Dedication: To Paul and David for a delightful dinner and for spurring me to do this 
+Dedication: To Paul and David for a delightful dinner and for spurring me to do develop this project.
 
-<input type=button value='Source code on GitHub' onclick=window.location.href='https://github.com/jaanga/cookbook/tree/gh-pages/star-spotter'; />
+<input type=button value='Source code on GitHub' onclick=window.location.href='https://github.com/jaanga/terrain-r2/tree/gh-pages/viewers/star-spotter'; />
 
 ## Concept
 

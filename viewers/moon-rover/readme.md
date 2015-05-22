@@ -9,6 +9,7 @@ Interesting algorithms, but probably not best way to proceed.
 Possibility: reuse the name somewhere else
 
 * [Moon Rover R2]( http://jaanga.github.io/terrain-r2/viewers/moon-rover/moon-rover-r2.html )
+	* 2015-05-19
 	* Very fast
 		* Try using the cursor keys!
 	* Issue: the cracks/gaps between tiles are simply just about absolutely unavoidable

@@ -43,9 +43,11 @@
 		info.innerHTML = '<a href="" ><h1>' + document.title + '</h1></a>' +
 			'<p><select id=selPlace></select></p>' +
 			'<p><button onclick=goNorth(); >North</button> ' +
-			'<button onclick=goSouth(); >South</button> ' +
-			'<button onclick=goEast(); >East</button> ' +
-			'<button onclick=goWest(); >West</button></p>' +
+				'<button onclick=goSouth(); >South</button> ' +
+				'<button onclick=goEast(); >East</button> ' +
+				'<button onclick=goWest(); >West</button><br>' +
+				'Or use cursor keys' +
+				'</p>' +
 			'<p>X <input type=range id=inpX min=0 max=8192 step=10 value=' + centerX + ' onclick=centerX=parseInt(this.value,10);initTerrain(); /> </p>' +
 			'<p>Y <input type=range id=inpY min=0 max=4096 step=10 value=' + centerZ + ' onclick=centerZ=parseInt(this.value,10);initTerrain(); /> </p>' +
 			'<p><button onclick=setControlsFirstPerson(); >First Person Controls</button> ' +
@@ -97,7 +99,7 @@
 // Edits and additions by Jaanga authors
 
 		var data = requestGazetteer( '../../../terrain-plus/gazetteer/moon-100-r2.csv' );
-//		var data = requestGazetteer( 'http://jaanga.github.io/terrain-plus/gazetteer/moon-100-r2.csv' );
+		var data = requestGazetteer( 'http://jaanga.github.io/terrain-plus/gazetteer/moon-100-r2.csv' );
 		var xmlHttp;
 
 		function requestGazetteer( fileName ) {
@@ -130,7 +132,7 @@
 
 			}
 
-console.log( gazetteer );
+// console.log( gazetteer );
 //			setPlacards();
 
 			parent.selPlace.onchange = function() {
