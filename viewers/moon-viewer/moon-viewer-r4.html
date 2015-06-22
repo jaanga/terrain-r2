@@ -56,25 +56,6 @@
 			'<div id=msg ></div>' +
 		'';
 
-
-		inpX.ontouchmove = function () {
-
-			centerX = this.valueAsNumber;
-			initTerrain();
-
-//				out.value = inp.valueAsNumber;
-
-		};
-
-		inpY.ontouchmove = function () {
-
-			centerZ = this.valueAsNumber;
-			initTerrain();
-
-//				out.value = inp.valueAsNumber;
-
-		};
-
 		renderer = new THREE.WebGLRenderer( { antialias: true }  );
 		renderer.setSize( window.innerWidth, window.innerHeight );
 		document.body.appendChild( renderer.domElement );
