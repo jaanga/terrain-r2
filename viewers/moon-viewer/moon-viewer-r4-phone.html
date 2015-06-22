@@ -12,6 +12,7 @@
 
 	var centerX = 4000;
 	var centerZ = 2000;
+	var placards;
 
 	var delta = 8;
 //	var imageName = '../../images/LALT_GGT_MAP.jpg';
@@ -138,6 +139,8 @@
 			gazetteer = [ ['select destination'] ];
 			var index = 0;
 
+
+
 			for ( var i = 0, place; i < lines.length; i++ ) {
 
 				place = lines[i].split( ',' );
@@ -157,9 +160,12 @@
 				var startPlace = this.selectedIndex;
 
 				centerX = gazetteer[ startPlace ][ 2 ];
-				CenterZ = gazetteer[ startPlace ][ 3 ];
+				centerZ = gazetteer[ startPlace ][ 3 ];
 
 				initTerrain();
+
+				drawPlacard( gazetteer[ startPlace ][ 0 ], 0.2, '#0f0', 0, 100, 0 );
+
 
 			};
 
@@ -228,11 +234,16 @@
 		}
 
 		scene.remove( mesh );
+		scene.remove( placards );
+
 		mesh = new THREE.Mesh( geometry.clone(), material );
 		mesh.geometry.computeFaceNormals();
 		mesh.geometry.computeVertexNormals();
 
 		scene.add( mesh );
+
+		placards = new THREE.Object3D();
+		scene.add( placards );
 
 	}
 
@@ -264,6 +275,55 @@
 
 	}
 
+	function drawPlacard ( text, scale, color, x, y, z) {
+
+		var texture = canvasText( text, color );
+		var spriteMaterial = new THREE.SpriteMaterial( { map: texture, useScreenCoordinates: false, opacity: 1 } );
+		var sprite = new THREE.Sprite( spriteMaterial );
+		sprite.position.set( x, y, z ) ;
+		sprite.scale.set( scale * texture.image.width, scale * texture.image.height );
+
+		placards.add( sprite )
+
+	}
+
+	function canvasText( textArray, color ) {
+
+		var canvas = document.createElement( 'canvas' );
+		var context = canvas.getContext( '2d' );
+
+		if ( typeof textArray === 'string' ) textArray = [ textArray ];
+		context.font = '48px sans-serif';
+		var width = 0;
+
+		for (var i = 0, len = textArray.length; i < len; i++) {
+			width = context.measureText( textArray[i] ).width > width ? context.measureText( textArray[i] ).width : width;
+		}
+
+		canvas.width = width + 20; // 480
+		canvas.height = textArray.length * 60;
+
+		context.fillStyle = color;
+		context.globalAlpha = 0.85
+		context.fillRect( 0, 0, canvas.width, canvas.height);
+
+		context.lineWidth = 1 ;
+		context.strokeStyle = '#000';
+		context.strokeRect( 0, 0, canvas.width, canvas.height);
+
+		context.fillStyle = '#000' ;
+		context.font = '48px sans-serif';
+
+		for (var i = 0, len = textArray.length; i < len; i++) {
+			context.fillText( textArray[i], 10, 48  + i * 60 );
+		}
+
+		var texture = new THREE.Texture( canvas );
+		texture.minFilter = texture.magFilter = THREE.NearestFilter;
+		texture.needsUpdate = true;
+		return texture;
+
+	}
 
 	function onKeyUp ( event ) {
 
@@ -284,6 +344,8 @@
 		}
 
 	}
+
+
 
 	function animate() {
 
