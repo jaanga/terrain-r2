@@ -80,7 +80,7 @@
 		menu.style.cssText = ' background-color: #eee; border: 1px #ccc solid; left: -220px;  max-height: ' + ( window.innerHeight - 50 ) + 'px; ' +
 			'opacity: 0.8; overflow: auto; padding: 0 10px; position: absolute; top: 0px; transition: left 1s; max-width: 200px; ';
 		menu.innerHTML = '<h3 style=margin:0; ><a href="" >' + document.title + '</a> ' +
-			'<a id=i href=http://jaanga.github.io/jaanga-terrain/terrain-r2/viewers/moon-rover-mobile/ >&#x24D8;</a></h3>' +
+			'<a id=i href=http://jaanga.github.io/terrain-r2/viewers/moon-rover-mobile/ >&#x24D8;</a></h3>' +
 			'<p><select id=selPlace></select></p>' +
 			'<p>' +
 				'<button onclick=controls.reset(); >Zoom All</button> ' +
@@ -208,7 +208,7 @@
 
 				drawSprite( place[ 0 ], 0.25, 120, parseFloat( place[ 2 ] ) - halfWidth, placardHeight, parseFloat( place[ 3 ] ) - halfHeight );
 
-				initTerrain();
+				initTerrain( true );
 
 				canvas.focus();
 
