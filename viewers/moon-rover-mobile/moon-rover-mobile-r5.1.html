@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang=en >
 <head>
-<title>Moon Rover Mobile r5</title>
+<title>Moon Rover Mobile r5.1</title>
 <meta charset=utf-8 />
 <meta name=viewport content = 'width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0' />
 </head>
@@ -25,10 +25,11 @@
 //	var mapImage = sourceFolder + 'moon-images/moon_8k_color_brim16.jpg'; // 8192 x 4096 http://laps.noaa.gov/albers/sos/moon/moon_8k_color_brim16.jpg
 	var mapImage = sourceFolder + 'moon-images/moon_8k_color_brim16_4096x2048.jpg'; //  http://laps.noaa.gov/albers/sos/moon/moon_8k_color_brim16.jpg
 
-
-	var heightmapImage = sourceFolder + 'moon-heightmaps/LALT_GGT_MAP.jpg'; // 5770 x 2880
+//	var heightmapImage = sourceFolder + 'moon-heightmaps/moon_lro_bumpmap_8192x4096.jpg'
 //	var heightmapImage = sourceFolder + 'moon-heightmaps/WAC_GLD100_E000N1800_008P.jpg'; // 5770 x 2880
+//	var heightmapImage = sourceFolder + 'moon-heightmaps/LALT_GGT_MAP.jpg'; // 5770 x 2880
 //	var heightmapImage = sourceFolder + 'moon-heightmaps/WAC_GLD100_E000N1800_016P.png'; // 5770 x 2880
+	var heightmapImage = sourceFolder + 'moon-heightmaps/WAC_GLD100_E000N1800_016P.jpg'; // 5770 x 2880
 
 	var width = 5760;
 	var height = 2880;
@@ -36,13 +37,17 @@
 	var halfWidth = 0.5 * width;
 	var halfHeight = 0.5 * height;
 
-	var meshHeight = -30;
-	var placardHeight = 260;
+	var meshHeight = 0;
+
+	var placardHeight = 200;
+	var placardSize = 0.15;
 
 //	var selectedPlace = 1753;  // Copernicus 9000
 	var selectedPlace = 20;  // Copernicus 100
 
 	var scale = 1;
+	var scaleAdjust = 0.5;
+
 	var delta = 32;
 
 	var centerX, centerZ;
@@ -114,6 +119,13 @@
 		var axisHelper = new THREE.AxisHelper( 500 );
 		scene.add( axisHelper );
 
+		heightmapImg = document.createElement( 'img' );
+//		document.body.appendChild( heightmapImg );
+//		heightmapImg.style.cssText = 'position: absolute; top: 0; z-index: -50;';
+		heightmapImg.crossOrigin = 'Anonymous';
+		heightmapImg.onload = initTerrain;
+		heightmapImg.src = heightmapImage;
+
 		THREE.ImageUtils.crossOrigin = 'anonymous';
 		var texture = THREE.ImageUtils.loadTexture( mapImage );
 		texture.minFilter = texture.magFilter = THREE.NearestFilter;
@@ -130,13 +142,6 @@
 		canvas.width = canvas.height = 256;
 		context = canvas.getContext( '2d' );
 
-		heightmapImg = document.createElement( 'img' );
-		document.body.appendChild( heightmapImg );
-		heightmapImg.style.cssText = 'position: absolute; top: 0; z-index: 50;';
-		heightmapImg.crossOrigin = 'Anonymous';
-		heightmapImg.onload = initTerrain;
-		heightmapImg.src = heightmapImage;
-
 		geometry = new THREE.PlaneBufferGeometry( 256, 256, 255, 255);
 		geometry.applyMatrix( new THREE.Matrix4().makeRotationX( -0.5 * Math.PI ) );
 		vertices = geometry.attributes.position.array;
@@ -144,8 +149,6 @@
 		heightMesh = new THREE.Mesh( geometry, material3D );
 		heightMesh.position.y = meshHeight;
 		scene.add( heightMesh );
-
-
 
 		getGazetteerMoon();
 
@@ -181,7 +184,7 @@
 
 				gazetteer.push( [ place[0], parseFloat( place[ 1 ] ), parseFloat( place[ 2 ] ), parseFloat( place[ 3 ] ) ] );
 
-					drawSprite( place[ 0 ], 0.25, 120, parseFloat( place[ 2 ] ) - halfWidth, placardHeight, parseFloat( place[ 3 ] ) - halfHeight );
+					drawSprite( place[ 0 ], placardSize, 120, parseFloat( place[ 2 ] ) - halfWidth, placardHeight, parseFloat( place[ 3 ] ) - halfHeight );
 
 			}
 
@@ -203,7 +206,7 @@
 				centerX = place[ 2 ];
 				centerZ = place[ 3 ];
 
-				drawSprite( place[ 0 ], 0.25, 120, parseFloat( place[ 2 ] ) - halfWidth, placardHeight, parseFloat( place[ 3 ] ) - halfHeight );
+				drawSprite( place[ 0 ], placardSize, 120, parseFloat( place[ 2 ] ) - halfWidth, placardHeight, parseFloat( place[ 3 ] ) - halfHeight );
 
 				initTerrain( true );
 
@@ -232,12 +235,11 @@
 
 		map = context.getImageData( 0, 0, 256, 256 ).data;
 
-		var scl =  0.01 * scale;
+		var scl = scaleAdjust * scale;
 
-		for ( var i = 1, j = 1; i < vertices.length; i += 3, j += 4 ) {
+		for ( var i = 1, j = 0; i < vertices.length; i += 3, j += 4 ) {
 
-			elevation = map[ j ] ; //+ 255 * map[ j + 1 ];
-			vertices[ i ] = scl * elevation ;
+			vertices[ i ] = scl * map[ j ]; ;
 
 		}
 
