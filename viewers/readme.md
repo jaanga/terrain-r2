@@ -4,7 +4,11 @@
 ===
 
 * [Moon Rover Mobile]( http://jaanga.github.io/terrain-r2/viewers/moon-rover-mobile/ )
-* [Moon Viewer]( http://jaanga.github.io/terrain-r2/viewers/moon-viewer/ )
+
+More in a state of flux:
+
+* [Moon Viewer]( http://jaanga.github.io/terrain-r2/viewers/moon-viewer/ )  
+	* Deprecated
 * [Moon Rover]( http://jaanga.github.io/terrain-r2/viewers/moon-rover/ )
 	* Deprecated
 * [Star Spotter]( http://jaanga.github.io/terrain-r2/viewers/star-spotter/ ) 
