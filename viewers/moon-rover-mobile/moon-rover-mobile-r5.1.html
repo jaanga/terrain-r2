@@ -8,7 +8,7 @@
 <body>
 <script src = http://rawgit.com/mrdoob/three.js/r72/build/three.min.js ></script>
 <script src = http://rawgit.com/mrdoob/three.js/r72/examples/js/controls/OrbitControls.js ></script>
-<script src = http://rawgit.com/mrdoob/three.js/r72/examples/js/controls/FirstPersonControls.js  ></script>
+<script src = http://rawgit.com/mrdoob/three.js/r72/examples/js/controls/FirstPersonControls.js ></script>
 <script src = http://rawgit.com/mrdoob/three.js/r72/examples/js/libs/stats.min.js ></script>
 <script>
 
@@ -43,16 +43,17 @@
 	var placardSize = 0.15;
 
 //	var selectedPlace = 1753;  // Copernicus 9000
-	var selectedPlace = 20;  // Copernicus 100
+//	var selectedPlace = 20;  // Copernicus 100
+	var selectedPlace = Math.floor( Math.random() * 97 );  // Copernicus 100
 
 	var scale = 1;
 	var scaleAdjust = 0.5;
 
 	var delta = 32;
 
-	var centerX, centerZ;
-
 	var mapMesh, heightmap;
+	var canvas, context;
+	var centerX, centerZ;
 
 	var css, hamburger, menu, navigation, renderer, scene, camera, controls;
 	var geometry, material, mesh;
@@ -149,6 +150,16 @@
 		heightMesh = new THREE.Mesh( geometry, material3D );
 		heightMesh.position.y = meshHeight;
 		scene.add( heightMesh );
+
+		if ( location.hash.length > 1 ) {
+
+			selectedPlace = location.hash.substr( 1 );
+
+		} else { 
+
+			selectedPlace = Math.floor( Math.random() * 97 );  // Copernicus 100
+
+		}
 
 		getGazetteerMoon();
 

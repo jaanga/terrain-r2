@@ -49,7 +49,10 @@ To provide a way of flying over the sphere of the moon in 3D and to see its crat
 * Slider to adjust vertical scale in real-time
 * Camera position follows cursor keys
 	* Latest camera position is used to control camera position when using cursor keys 
-
+* Supports permalinks
+	* [Copernicus]( http://jaanga.github.io/terrain-r2/viewers/moon-rover-mobile/dev/index.html#20 )
+	* [Gassendi]( http://jaanga.github.io/terrain-r2/viewers/moon-rover-mobile/dev/index.html#31 )
+	* [Tycho]( http://jaanga.github.io/terrain-r2/viewers/moon-rover-mobile/dev/index.html#94 )
 
 ## Road Map
 
