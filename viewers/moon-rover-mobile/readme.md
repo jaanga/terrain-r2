@@ -11,7 +11,10 @@
 _Moon Viewer - Dev revision - Code Edit View_ /  [Fullscreen]( http://exploratoria.github.io/lib/code-edit-view/code-edit-view.html#http://exploratoria.github.io/sandbox/astronomy/moon-rover-mobile/moon-rover-mobile-v-0-1-0.html )
 -->
 
-[Moon Rover Mobile R5 Demo Full Screen]( http://jaanga.github.io/terrain-r2/viewers/moon-rover-mobile/dev/ )
+[Moon Rover Mobile R5 Demo Full Screen - Dev]( http://jaanga.github.io/terrain-r2/viewers/moon-rover-mobile/dev/ )
+
+[Moon Rover Mobile R5 Demo Full Screen - Build]( http://jaanga.github.io/terrain-r2/viewers/moon-rover-mobile/build/ )
+
 
 ## Concept
 
