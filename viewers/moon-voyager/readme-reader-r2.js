@@ -11,7 +11,7 @@
 			'h2 { margin: 30px 20% 10px 20%; }' +
 			'h3 { margin: 30px 20% 10px 20%; }' +
 
-			'iframe { border: 0px solid; margin: 50px 0 80px 0; width: 100%; }' +
+			'iframe { border: 0px solid; margin: 50px 0 0px 0; width: 100%; }' +
 
 			'p, li { margin: 10px 20%; }' +
 			'li li { margin: 10px 2%; }' +

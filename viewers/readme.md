@@ -3,6 +3,8 @@
 [Viewers Read Me]( ./index.html )
 ===
 
+* [Moon Voyager]( http://jaanga.github.io/terrain-r2/viewers/moon-voyager/ )
+
 * [Moon Rover Mobile]( http://jaanga.github.io/terrain-r2/viewers/moon-rover-mobile/ )
 
 More in a state of flux:

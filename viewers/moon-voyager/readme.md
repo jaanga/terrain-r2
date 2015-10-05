@@ -7,8 +7,8 @@
 <input type=button value='You are now in GitHub web page view - Click here to view Read Me file as source code' onclick=window.location.href='https://github.com/jaanga/terrain-r2/tree/gh-pages/viewers/moon-voyager/'; />
 
 
-<iframe src="http://exploratoria.github.io/lib/code-edit-view/code-edit-view.html#http://jaanga.github.io/terrain-r2/viewers/moon-/moon-rover-mobile-r5-2.html" width=100% height=500px ></iframe>  
-_Moon Rover - Dev revision - Code Edit View_ /  [Fullscreen]( http://exploratoria.github.io/lib/code-edit-view/code-edit-view.html#http://jaanga.github.io/terrain-r2/viewers/moon-rover-mobile/moon-rover-mobile-r5-2.html )
+<iframe src="http://exploratoria.github.io/lib/code-edit-view/code-edit-view.html#http://jaanga.github.io/terrain-r2/viewers/moon-voyager/moon-voyager-r2.html" width=100% height=600px ></iframe>  
+_Moon Rover - Dev revision - Code Edit View_ /  [Fullscreen]( http://exploratoria.github.io/lib/code-edit-view/code-edit-view.html#http://jaanga.github.io/terrain-r2/viewers/moon-voyager/moon-voyager-r2.html )
 
 
 [Moon Voyager Demo Full Screen - Dev]( http://jaanga.github.io/terrain-r2/viewers/moon-voyager/dev/ )
