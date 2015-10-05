@@ -76,7 +76,10 @@
 		menu = hamburger.appendChild( document.createElement( 'div' ) );
 		menu.style.cssText = ' background-color: #eee; border: 1px #ccc solid; left: -220px;  max-height: ' + ( window.innerHeight - 50 ) + 'px; ' +
 			'opacity: 0.8; overflow: auto; padding: 0 10px; position: absolute; top: 0px; transition: left 1s; max-width: 200px; ';
-		menu.innerHTML = '<a href="" ><h3>' + document.title + '</h3></a>' +
+		menu.innerHTML = '<h3>' +
+				'<a href="" >' + document.title + '</a> ' +
+				'<a id=i href=http://jaanga.github.io/terrain-r2/viewers/moon-voyager/ >&#x24D8;</a>' +
+			'</h3>' +
 			'<p><select id=selPlace></select></p>' +
 				'<p id=message ></p>' +
 				'<p>Vertical Scale <input type=range id=inpScale min=0 max=2 step=0.05 value=1 onchange=updateTerrain(); /></p>' +
@@ -365,7 +368,7 @@
 
 	function onMouseMove() {
 
-		startTime = parent.chkRotate.checked ? performance.now() : 1000000 ;
+		startTime = chkRotate.checked ? performance.now() : 1000000 ;
 		controls.autoRotate = false;
 
 	}
@@ -374,7 +377,7 @@
 
 	function animate( timestamp ) {
 
-		if ( timestamp - startTime > delayTime && parent.chkRotate.checked ) {
+		if ( timestamp - startTime > delayTime && chkRotate.checked ) {
 
 			controls.autoRotate = true;
 
