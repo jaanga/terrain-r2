@@ -27,15 +27,12 @@ To provide a way of flying over the sphere of the moon in 3D and to see its crat
 To show the usually hidden backside of the moon as easily as the fromt
 
 
-<!--
-
 ## Things to Do
 
 * Edit the auto rotation variable to change the speed of the spin of the moon
 * Edit heighPlacard to move the location signboards up or down
 * Edit the default height scale
 
--->
 
 
 ## Features
