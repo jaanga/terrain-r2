@@ -10,6 +10,7 @@
 			'h1 { margin: 30px 20%; }' +
 			'h2 { margin: 30px 20% 10px 20%; }' +
 			'h3 { margin: 30px 20% 10px 20%; }' +
+			'h4 { margin: 0 0 40px 5px; }' +
 
 			'iframe { border: 0px solid; margin: 50px 0 0px 0; width: 100%; }' +
 

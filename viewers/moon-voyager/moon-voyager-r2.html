@@ -18,20 +18,11 @@
 <script>
 
 // Enable the script to operate within an iframe, make URLs fixed - otherwise set to relative
-
 	var sourceFolder = window.self === window.top ? '../' : 'http://jaanga.github.io/terrain-r2/viewers/';
 
-//	var gazetteerFile = sourceFolder + 'moon-gazetteer/moon-100-5760x2880.csv';
-//	var gazetteerFile = sourceFolder + 'moon-gazetteer/moon-9000-5760x2880.csv';
 	var gazetteerFile = sourceFolder + 'moon-gazetteer/moon-100-gazetteer-source.csv';
 
-	var srcImage = '../moon-heightmaps/WAC_GLD100_E000N1800_004P.png';
-
-	var width = 1024;
-	var height = 512;
-
-	//var width = 512;
-	//var height = 256;
+	var srcImage = sourceFolder + '/moon-heightmaps/WAC_GLD100_E000N1800_004P.png';
 
 	var width = 1440;
 	var height = 720;
@@ -93,7 +84,6 @@
 				'<p><input type=checkbox id=inpHelpers onchange=toggleHelpers(); checked=true /> Display axis</p>' +
 				'<p><input type=checkbox id=chkRotate checked /> Auto Rotation</p>' +
 			'';
-
 
 		stats = new Stats();
 		stats.domElement.style.cssText = 'position: absolute; right: 0; top: 0; z-index: 100; ';
