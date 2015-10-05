@@ -3,10 +3,9 @@
 
 	function init() {
 
-//		document.body.style.cssText = ' font: 12pt monospace; left: 0; margin: 0 auto; max-width: 900px; position: absolute; right: 0; ';
-
 		var css = document.body.appendChild( document.createElement('style') );
-		css.innerHTML = 'body { font: 12pt monospace; margin: 0; }' +
+		css.innerHTML = '' +
+			'body { font: 12pt monospace; margin: 0; }' +
 			'h1 { margin: 30px 20%; }' +
 			'h2 { margin: 30px 20% 10px 20%; }' +
 			'h3 { margin: 30px 20% 10px 20%; }' +
