@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang=en >
 <head>
-<title>Moon Voyager R2</title>
+<title>Mars Voyager R1</title>
 <meta charset=utf-8 />
 <meta name=viewport content='width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0' />
 </head>
@@ -20,29 +20,30 @@
 // Enable the script to operate within an iframe, make URLs fixed - otherwise set to relative
 	var sourceFolder = window.self === window.top ? '../' : 'http://jaanga.github.io/terrain-r2/viewers/';
 
-	var gazetteerFile = sourceFolder + 'moon-gazetteer/moon-100-gazetteer-source.csv';
+	var gazetteerFile = sourceFolder + 'mars-gazetteer/mars-nomenclature.csv';
 
-	var heightMapSource = sourceFolder + '/moon-heightmaps/WAC_GLD100_E000N1800_004P.png';
+//	var srcImage = sourceFolder + '/mars-heightmaps/HIQ7R.jpg';
+	var srcImage = sourceFolder + '/mars-heightmaps/MarsHeight.bmp';
+//	var srcImage = sourceFolder + '/mars-heightmaps/iWPohk5sh54jf.png'; // uses different 0 longitude
 
-	var moonRadiusEquator = 1728;
+	var marsRadiusEquator = 3396;
+	var minPlaceRadiusToDisplay = 50; // radius of feature as defined by the gazetteer
 
-	var width = 1440;
-	var height = 720;
+	var mapWidth = 1440;
+	var mapHeight = 720;
 
 	var scale = 1;
-	var scaleAdjust = 0.0003;
+	var scaleAdjust = 0.0005;
 	var scl = scaleAdjust * scale;
 
-//	var selectedPlace = 1753;  // Copernicus 9000
-//	var selectedPlace = 20;  // Copernicus 100
-	var selectedPlace = Math.floor( Math.random() * 97 );  // Copernicus 100
+	var selectedPlace = Math.floor( Math.random() * 1837 );
 
 	var startTime = performance.now();
 	var delayTime = 2000;
 	var autoRotateSpeed = 0.2;
 
-	var placardHeight = 8000;
-	var placardSize = 3;
+	var placardYPosition = 4000;
+	var placardSize = 1;
 
 	var d2r = Math.PI / 180;
 
@@ -79,13 +80,14 @@
 				'<a href="" >' + document.title + '</a> ' +
 				'<a id=i href=http://jaanga.github.io/terrain-r2/viewers/moon-voyager/ >&#x24D8;</a>' +
 			'</h3>' +
-			'<p><select id=selPlace></select></p>' +
-				'<p id=message ></p>' +
-				'<p>Vertical Scale <input type=range id=inpScale min=0 max=2 step=0.05 value=1 onchange=scale=this.value;scl=scale*scaleAdjust;updateTerrain(); /></p>' +
-				'<p><input type=checkbox id=chkPlacards onchange=togglePlacards(); checked=true /> Display placards</p>' +
-				'<p><input type=checkbox id=inpHelpers onchange=toggleHelpers(); checked=true /> Display axis</p>' +
-				'<p><input type=checkbox id=chkRotate checked /> Auto Rotation</p>' +
-			'';
+			'<p><select id=selPlace ></select></p>' +
+			'<p id=message ></p>' +
+			'<p><select id=selHeightMap ></select></p>' +
+			'<p>Vertical Scale <input type=range id=inpScale min=0 max=2 step=0.05 value=1 onchange=scale=this.value;scl=scale*scaleAdjust;updateTerrain(); /></p>' +
+			'<p><input type=checkbox id=chkPlacards onchange=togglePlacards(); checked=true /> Display placards</p>' +
+			'<p><input type=checkbox id=inpHelpers onchange=toggleHelpers(); checked=true /> Display axis</p>' +
+			'<p><input type=checkbox id=chkRotate checked /> Auto Rotation</p>' +
+		'';
 
 		stats = new Stats();
 		stats.domElement.style.cssText = 'position: absolute; right: 0; top: 0; z-index: 100; ';
@@ -95,12 +97,12 @@
 		renderer.setSize( window.innerWidth, window.innerHeight );
 		document.body.appendChild( renderer.domElement );
 
-		camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 30000 );
-		camera.position.set( 12000, 12000, -12000 );
+		camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 15000 );
+		camera.position.set( -600, 1000, 9000 );
 
 		controls = new THREE.OrbitControls( camera, renderer.domElement );
-		controls.minDistance = 9000;
-		controls.maxDistance = 30000;
+		controls.minDistance = 4000;
+		controls.maxDistance = 15000;
 		scene = new THREE.Scene();
 
 		controls.autoRotateSpeed = autoRotateSpeed;
@@ -117,17 +119,17 @@
 //		heightMap.style.cssText = 'margin: 20px; position: absolute; top: 0;';
 		heightMap.crossOrigin = 'anonymous';
 		heightMap.onload = updateTerrain;
-		heightMap.src = heightMapSource;
+		heightMap.src = srcImage;
 
 		canvasHeightMap = document.createElement( 'canvas' );
 //		document.body.appendChild( canvasHeightMap );
 //		canvasHeightMap.style.cssText = 'margin: 20px; position: absolute; top: 0;';
-		canvasHeightMap.width = width;
-		canvasHeightMap.height = height;
+		canvasHeightMap.width = mapWidth;
+		canvasHeightMap.height = mapHeight;
 		contextHeightMap = canvasHeightMap.getContext( '2d' );
 
-		geometry = new THREE.SphereBufferGeometry( moonRadiusEquator, width - 1, height - 1 );
-		geometry.applyMatrix( new THREE.Matrix4().makeRotationY( Math.PI ) );
+		geometry = new THREE.SphereBufferGeometry( marsRadiusEquator, mapWidth - 1, mapHeight - 1 );
+//		geometry.applyMatrix( new THREE.Matrix4().makeRotationY( Math.PI ) );
 
 		material3D = new THREE.MeshNormalMaterial( { side: 2 } );
 
@@ -171,15 +173,15 @@
 
 				place = lines[i].split( ',' );
 
-				lat = place[ 2 ].substr( -1 ) === 'N' ? place[ 2 ].slice( 0, -1 ) : '-' +  place[ 2 ].slice( 0, -1 );
+				gazetteer.push( [ place[0], parseFloat( place[ 1 ] ), parseFloat( place[ 2 ] ), parseFloat( place[ 3 ] ), place[ 4 ] ] );
 
-				lon = place[ 3 ].substr( -1 ) === 'E' ? place[ 3 ].slice( 0, -1 ) : '-' +  place[ 3 ].slice( 0, -1 );
+				if ( parseFloat( place[ 1 ] ) > minPlaceRadiusToDisplay ) {
 
-				gazetteer.push( [ place[0], place[ 1 ], parseFloat( lat ), parseFloat( - lon ) ] );
+					pos = convertPosition( place[ 2 ], - place[ 3 ], placardYPosition )
 
-				pos = convertPosition( lat, - lon, placardHeight )
+					drawSprite( place[ 0 ], placardSize, 120, pos.x, pos.y, pos.z );
 
-				drawSprite( place[ 0 ], placardSize, 120, pos.x, pos.y, pos.z );
+				}
 
 			}
 
@@ -194,17 +196,17 @@
 
 			selPlace.selectedIndex = selectedPlace;
 
-			message.innerHTML = gazetteer[ selectedPlace][ 1 ];
+			message.innerHTML = (gazetteer[ selectedPlace][ 4 ]).replace( /"/g, '' ) ;
 
 			selPlace.onchange = function() {
 
 				var place = gazetteer[ this.selectedIndex ];
 
-				pos = convertPosition( place[ 2 ], place[ 3 ], 15000 )
+				pos = convertPosition( place[ 2 ], - place[ 3 ], placardYPosition + 2000 )
 
 				camera.position.set( pos.x, pos.y, pos.z );
 
-				message.innerHTML = place[ 1 ];
+				message.innerHTML = place[ 4 ].replace( /"/g, '' ) ;
 
 				controls.autoRotate = false;
 				chkRotate.checked = false;
@@ -217,9 +219,9 @@
 
 	function updateTerrain() {
 
-		contextHeightMap.drawImage( heightMap, 0, 0, heightMap.width, heightMap.height, 0, 0, width, height );
+		contextHeightMap.drawImage( heightMap, 0, 0, heightMap.width, heightMap.height, 0, 0, mapWidth, mapHeight );
 
-		map = contextHeightMap.getImageData( 0, 0, width, height ).data;
+		map = contextHeightMap.getImageData( 0, 0, mapWidth, mapHeight ).data;
 
 		heightMesh.geometry = geometry.clone();
 		vertices = heightMesh.geometry.attributes.position.array;
