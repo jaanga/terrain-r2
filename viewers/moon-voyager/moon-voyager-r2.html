@@ -41,8 +41,8 @@
 	var delayTime = 2000;
 	var autoRotateSpeed = 0.2;
 
-	var placardHeight = 8000;
-	var placardSize = 3;
+	var placardYPosition = 2000;
+	var placardSize = 0.8;
 
 	var d2r = Math.PI / 180;
 
@@ -63,7 +63,7 @@
 			'#bars, #i { font-size: 24pt; text-decoration: none; }' +
 			'#bars { color: pink; } ' +
 
-			'input[type=range] { -webkit-appearance: none; -moz-appearance: none; background-color: silver; height: 20px; width: 180px; } ' +
+			'input[type=range] { -moz-appearance: none; -webkit-appearance: none; background-color: silver; height: 20px; width: 180px; } ' +
 			'input[type=range]::-moz-range-thumb { -moz-appearance: none; background-color: #888; width: 10px; } ' +
 			'input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; background-color: #888; opacity: 0.5; height: 28px; width: 10px; } ' +
 		'';
@@ -80,12 +80,13 @@
 				'<a id=i href=http://jaanga.github.io/terrain-r2/viewers/moon-voyager/ >&#x24D8;</a>' +
 			'</h3>' +
 			'<p><select id=selPlace></select></p>' +
-				'<p id=message ></p>' +
-				'<p>Vertical Scale <input type=range id=inpScale min=0 max=2 step=0.05 value=1 onchange=scale=this.value;scl=scale*scaleAdjust;updateTerrain(); /></p>' +
-				'<p><input type=checkbox id=chkPlacards onchange=togglePlacards(); checked=true /> Display placards</p>' +
-				'<p><input type=checkbox id=inpHelpers onchange=toggleHelpers(); checked=true /> Display axis</p>' +
-				'<p><input type=checkbox id=chkRotate checked /> Auto Rotation</p>' +
-			'';
+			'<p id=message ></p>' +
+			'<p>Vertical Scale <input type=range id=inpScale min=0 max=2 step=0.05 value=1 onchange=scale=this.value;scl=scale*scaleAdjust;updateTerrain(); /></p>' +
+			'<p><input type=checkbox id=chkPlacards onchange=togglePlacards(); checked /> Display placards</p>' +
+			'<p><input type=checkbox id=inpHelpers onchange=toggleHelpers(); checked /> Display axis</p>' +
+			'<p><input type=checkbox id=chkGradient onchange=toggleGradientBackground(); checked /> Display gradient</p>' +
+			'<p><input type=checkbox id=chkRotate checked /> Auto Rotation</p>' +
+		'';
 
 		stats = new Stats();
 		stats.domElement.style.cssText = 'position: absolute; right: 0; top: 0; z-index: 100; ';
@@ -95,12 +96,12 @@
 		renderer.setSize( window.innerWidth, window.innerHeight );
 		document.body.appendChild( renderer.domElement );
 
-		camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 30000 );
-		camera.position.set( 12000, 12000, -12000 );
+		camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
+		camera.position.set( 3500, 3500, -3500 );
 
 		controls = new THREE.OrbitControls( camera, renderer.domElement );
-		controls.minDistance = 9000;
-		controls.maxDistance = 30000;
+		controls.minDistance = 2500;
+		controls.maxDistance = 8000;
 		scene = new THREE.Scene();
 
 		controls.autoRotateSpeed = autoRotateSpeed;
@@ -139,7 +140,7 @@
 
 		getGazetteerMoon();
 
-		setRandomGradient();
+		toggleGradientBackground();
 
 	}
 
@@ -177,7 +178,7 @@
 
 				gazetteer.push( [ place[0], place[ 1 ], parseFloat( lat ), parseFloat( - lon ) ] );
 
-				pos = convertPosition( lat, - lon, placardHeight )
+				pos = convertPosition( lat, - lon, placardYPosition )
 
 				drawSprite( place[ 0 ], placardSize, 120, pos.x, pos.y, pos.z );
 
@@ -200,7 +201,7 @@
 
 				var place = gazetteer[ this.selectedIndex ];
 
-				pos = convertPosition( place[ 2 ], place[ 3 ], 15000 )
+				pos = convertPosition( place[ 2 ], place[ 3 ], placardYPosition + 1500 )
 
 				camera.position.set( pos.x, pos.y, pos.z );
 
@@ -341,30 +342,33 @@
 
 	}
 
+	function toggleGradientBackground() {
+
+		if ( chkGradient.checked ) {
+
+			document.body.style.cssText += ' height: ' + window.innerHeight + 'px; ';
+
+			var col1 = Math.random().toString(16).slice(2, 8);
+			var col2 = Math.random().toString(16).slice(2, 8);
+			var col3 = Math.random().toString(16).slice(2, 8);
+			var x = ( Math.random() * window.innerWidth ).toFixed(0);
+			var y = ( Math.random() * window.innerHeight ).toFixed(0);
+
+			document.body.style.backgroundImage = 'radial-gradient( circle farthest-corner at ' + x + 'px ' + y + 'px, #' + col1 + ' 0%, #' + col2 + ' 50%, #' + col3 + ' 100%)';
+
+		} else {
+
+			document.body.style.backgroundImage = '';
+
+		}
+
+	}
+
 	function slideHamburger() {
 
 		hamburger.style.left = hamburger.style.left === '220px' ? 0 : '220px';
 
 	}
-
-	function setRandomGradient() {
-
-		cssBackround = document.body.appendChild( document.createElement('style') );
-
-		var col1 = "#" + Math.random().toString(16).slice(2, 8);
-		var col2 = "#" + Math.random().toString(16).slice(2, 8);
-		var col3 = "#" + Math.random().toString(16).slice(2, 8);
-		var X = ( Math.random() * window.innerWidth ).toFixed(0);
-		var Y = ( Math.random() * window.innerHeight ).toFixed(0);
-		var center =  20 + ( Math.random() * 60 ).toFixed(0);
-
-		cssBackround.innerText = 'body { ' +
-			'background: -webkit-radial-gradient(' + X + 'px ' + Y + 'px, farthest-corner, ' + col1 + ' 0%, ' + col2 + ' 50%, ' + col3 + ' 100%); ' +
-			'background: -moz-radial-gradient(' + X + 'px ' + Y + 'px, farthest-corner, ' + col1 + ' 0%, ' + col2 + ' 50%, ' + col3 + ' 100%); ' +
-			'background: radial-gradient(' + X + 'px ' + Y + 'px, farthest-corner, ' + col1 + ' 0%, ' + col2 + ' 50%, ' + col3 + ' 100%); }' +
-		'';
-
-	};
 
 	function onWindowResize() {
 

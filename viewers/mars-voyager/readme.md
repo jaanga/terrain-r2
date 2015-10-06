@@ -1,21 +1,23 @@
 [Jaanga]( http://jaanga.github.io/ ) &raquo; [Terrain 2]( http://jaanga.github.io/terrain-r2/ ) &raquo; [Viewers]( http://jaanga.github.io/terrain-r2/viewers/ ) &raquo;
 
-[Moon Voyager Read Me]( index.html )
+[Mars Voyager Read Me]( index.html )
 ===
 
-<span style=display:none; >[You are now in GitHub source code view - click here to view Read Me file as a web page]( http://jaanga.github.io/terrain-r2/viewers/moon-voyager/index.html "View file as a web page." ) </span>
-<input type=button value='You are now in GitHub web page view - Click here to view Read Me file as source code' onclick=window.location.href='https://github.com/jaanga/terrain-r2/tree/gh-pages/viewers/moon-voyager/'; />
+<span style=display:none; >[You are now in GitHub source code view - click here to view Read Me file as a web page]( http://jaanga.github.io/terrain-r2/viewers/mars-voyager/ "View file as a web page." ) </span>
+<input type=button value='You are now in GitHub web page view - Click here to view Read Me file as source code' onclick=window.location.href='https://github.com/jaanga/terrain-r2/tree/gh-pages/viewers/mars-voyager/'; />
 
 
-<iframe src="http://exploratoria.github.io/lib/code-edit-view/code-edit-view.html#http://jaanga.github.io/terrain-r2/viewers/moon-voyager/moon-voyager-r2.html" width=100% height=600px ></iframe>  
-####_Moon Voyager - Dev revision - Code Edit View_ /  [Fullscreen]( http://exploratoria.github.io/lib/code-edit-view/code-edit-view.html#http://jaanga.github.io/terrain-r2/viewers/moon-voyager/moon-voyager-r2.html )
+<iframe src="http://exploratoria.github.io/lib/code-edit-view/code-edit-view.html#http://jaanga.github.io/terrain-r2/viewers/mars-voyager/mars-voyager-r1.html" width=100% height=600px ></iframe>  
+####_Mars Voyager - Dev revision - Code Edit View_ /  [Fullscreen]( http://exploratoria.github.io/lib/code-edit-view/code-edit-view.html#http://jaanga.github.io/terrain-r2/viewers/mars-voyager/mars-voyager-r1.html )
 
 
-[Mars Voyager Demo Full Screen - Dev]( http://jaanga.github.io/terrain-r2/viewers/moon-voyager/dev/ )
+[Mars Voyager Demo Full Screen - Dev]( http://jaanga.github.io/terrain-r2/viewers/mars-voyager/dev/ )
 
 
 
 ## Concept
+
+_The following is a copy of the the text on the Moon Voyager Read Me_
 
 ### Issue
 
@@ -35,7 +37,7 @@ To show the usually hidden backside of the moon as easily as the front
 
 
 
-## Features
+## Mars Features
 
 * 1440 x 720 terrain data points with 255 heights
 * 'Travel' over the moon in 3D faster than any satellite
