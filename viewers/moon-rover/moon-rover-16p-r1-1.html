@@ -14,6 +14,8 @@
 
 // Enable the script to operate within an iframe, make URLs fixed - otherwise set to relative
 	var sourceFolder = window.self === window.top ? '../' : 'http://exploratoria.github.io/sandbox/astronomy/';
+	var heightMapsFolder = 'c:/temp/moon-heightmaps/64p/'
+	var name = '/64p-';
 
 //	var gazetteerFile = sourceFolder + 'moon-gazetteer/moon-100-9216x4608.csv';
 //	var gazetteerFile = sourceFolder + 'moon-gazetteer/moon-100-5760x2880.csv';
@@ -50,10 +52,10 @@
 	var halfHMWidth = 0.5 * heightmapWidth;
 	var halfHMHeight = 0.5 * heightmapHeight;
 
-	var pixelsFactor = 1;
+	var pixelsFactor = 8;
 
-	var heightMeshWidth = 180 / pixelsFactor;
-	var heightMeshHeight = 180 / pixelsFactor;
+	var heightMeshWidth = 256 / pixelsFactor;
+	var heightMeshHeight = 256 / pixelsFactor;
 
 	var heightMeshYPosition = 10;
 	var placardYPosition = 100;
@@ -63,10 +65,10 @@
 	var minPlaceRadiusToDisplay = 50; // radius of feature as defined by the gazetteer
 
 	var centerX, centerZ;
-	var delta = 180;
+	var delta = 256;
 
 	var scale = 1;
-	var scaleAdjust = 0.005;
+	var scaleAdjust = 0.0025;
 	var scl = scale * scaleAdjust;
 
 	var css, menu, stats, renderer, scene, camera, controls;
@@ -142,8 +144,8 @@
 		canvas = document.createElement( 'canvas' );
 //		document.body.appendChild( canvas );
 //		canvas.style.cssText = 'position: absolute; top: 0; z-index: -1;';
-		canvas.width = heightMeshWidth;
-		canvas.height = heightMeshHeight;
+		canvas.width = 256; // heightMeshWidth;
+		canvas.height = 256; //heightMeshHeight;
 		context = canvas.getContext( '2d' );
 
 		heightmapCanvas = document.createElement( 'canvas' );
@@ -154,7 +156,7 @@
 		heightmapCanvas.height = heightmapHeight;
 		heightmapContext = heightmapCanvas.getContext( '2d' );
 
-		geometry = new THREE.PlaneBufferGeometry( heightMeshWidth, heightMeshHeight, heightMeshWidth - 1, heightMeshHeight - 1);
+		geometry = new THREE.PlaneBufferGeometry( 64, 64, 255, 255 );
 		geometry.applyMatrix( new THREE.Matrix4().makeRotationX( -0.5 * Math.PI ) );
 		vertices = geometry.attributes.position.array;
 		material3D = new THREE.MeshNormalMaterial( { side: 2 } );
@@ -226,13 +228,13 @@
 				centerX = nextPlace[ 2 ];
 				centerZ = nextPlace[ 3 ];
 
-				drawSprite( nextPlace[ 0 ], 0.15, 120, parseFloat( nextPlace[ 2 ] ) - 0.5 * mapWidth, placardYPosition, parseFloat( nextPlace[ 3 ] ) - 0.5 * mapHeight);
+				drawSprite( nextPlace[ 0 ], 0.15, 120, nextPlace[ 2 ] - 0.5 * mapWidth, placardYPosition, nextPlace[ 3 ] - 0.5 * mapHeight);
 
 				doIt();
 
 				canvas.focus();
 
-//				butZoomIn.onclick();
+				butZoomIn.onclick();
 
 			};
 
@@ -244,11 +246,11 @@
 
 	function doIt() {
 
-		var diff = centerX > 2880 ? -16 : 16;
-		tileX = Math.floor( 32 * centerX * pixelsFactor / heightmapWidth ) + diff;
-		tileY = Math.floor( 16 * centerZ * pixelsFactor / heightmapHeight );
+		var diff = centerX > 2880 ? -45 : 45;
+		tileX = Math.floor( 90 * centerX / mapWidth ) + diff;
+		tileY = Math.floor( 45 * centerZ / mapHeight );
 
-		heightmapImage = '../moon-heightmaps/16p/' + tileX + '/16p-' + tileX + '-' + tileY + '.png'; // 23040 x 11520
+		heightmapImage = heightMapsFolder + tileX + name + tileX + '-' + tileY + '.png'; // 23040 x 11520
 
 		heightmapWindow.src = heightmapImage;
 
@@ -257,10 +259,12 @@
 
 	function initTerrain() {
 
-		heightmapContext.drawImage( heightmapWindow, 0, 0, heightMeshWidth, heightMeshHeight, 0, 0, heightMeshWidth, heightMeshHeight );
+//		heightmapContext.drawImage( heightmapWindow, 0, 0, heightMeshWidth, heightMeshHeight, 0, 0, heightMeshWidth, heightMeshHeight );
 
-		canvas.width = heightMeshWidth;
-		canvas.height =  heightMeshHeight;
+		heightmapContext.drawImage( heightmapWindow, 0, 0, 256, 256, 0, 0, 256, 256 );
+
+		canvas.width = 256; //heightMeshWidth;
+		canvas.height =  256; // heightMeshHeight;
 		context = canvas.getContext( '2d' );
 
 /*
@@ -273,11 +277,15 @@
 			context.drawImage( heightmapWindow, centerX - 128 - halfHMWidth, centerZ - 128, 256, 256, 0, 0, 256, 256 );
 
 		}
-*/
+
 
 		context.drawImage( heightmapWindow, 0, 0, heightMeshWidth, heightMeshHeight, 0, 0, heightMeshWidth, heightMeshHeight );
 
 		map = context.getImageData( 0, 0, heightMeshWidth, heightMeshHeight ).data;
+*/
+		context.drawImage( heightmapWindow, 0, 0, 256, 256, 0, 0, 256, 256 );
+
+		map = context.getImageData( 0, 0, 256, 256 ).data;
 
 //		var scl =  scaleAdjust * scale;
 
@@ -292,10 +300,11 @@
 		heightMesh.geometry.computeFaceNormals();
 		heightMesh.geometry.computeVertexNormals();
 
-		diff = tileX < 16 ? - 0.5 * mapWidth : -mapWidth;
-		xx = tileX * ( heightmapWidth / 32 ) + 90 + diff;
-		yy = tileY * ( heightmapHeight / 16 ) - 0.5 * mapHeight + 90;
-//		drawSprite( tileX + ' - ' + tileY, 0.25, 200, xx, 250,yy );
+//		diff = tileX < 45 ? - 0.5 * mapWidth : -mapWidth;
+		diff = tileX < 45 ? 0 : -mapWidth;
+		xx = tileX * ( mapWidth / 90 ) + 32 + diff;
+		yy = tileY * ( mapHeight / 45 ) - 0.5 * mapHeight + 32;
+		drawSprite( tileX + ' - ' + tileY, 0.25, 200, xx, 250, yy );
 
 		heightMesh.position.set( xx, heightMeshYPosition, yy);
 
@@ -374,63 +383,6 @@
 		return texture;
 
 	}
-
-/*
-// Camera Controls
-
-	function addCamerasControls() {
-
-		cam1 = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000 );
-		cam1.position.set( -150, 20, 0 );
-
-		cam2 = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000 );
-		cam2.position.set( 100, 100, 100 );
-		con2 = new THREE.OrbitControls( cam2, renderer.domElement );
-
-		window.addEventListener( 'keydown', onKeyDown, false );
-//		renderer.domElement.addEventListener( 'wheel', onMouseWheel, false );
-
-		setControlsOrbit();
-
-	}
-
-	function setControlsFirstPerson() {
-
-		cam1.position.set( 500, 0, 0 );
-
-		con1 = new THREE.FirstPersonControls( cam1 );
-		con1.target.set( 0, 0, 0 );
-		con1.lookSpeed = 0.05;
-		con1.movementSpeed = 50;
-//		con1.lon = 0;
-
-		camera = cam1;
-		controls = con1;
-
-	}
-
-	function setControlsOrbit() {
-
-		camera = cam2;
-		camera.position.set( 0, 200, 350 );
-		controls = con2;
-
-	}
-*/
-
-
-/*
-	function onKeyDown( event ) {
-
-		switch ( event.keyCode ) {
-
-			case 32: chkFreeze.checked = !chkFreeze.checked; break; // spacebar
-
-		}
-
-	}
-
-*/
 
 // cursor keys
 
