@@ -81,7 +81,7 @@
 			'opacity: 0.8; overflow: auto; padding: 0 0 0 0px; position: absolute; top: 0px; transition: left 1s; max-width: 200px; ';
 		menu.innerHTML = '<h3>' +
 				'<a href="" >' + document.title + '</a> ' +
-				'<a id=i href=http://jaanga.github.io/terrain-r2/viewers/moon-voyager/ >&#x24D8;</a>' +
+				'<a id=i href=http://jaanga.github.io/terrain-r2/viewers/mars-voyager/ >&#x24D8;</a>' +
 			'</h3>' +
 			'<p><select id=selPlace ></select></p>' +
 			'<p id=message ></p>' +
@@ -180,7 +180,7 @@
 
 				if ( parseFloat( place[ 1 ] ) > minPlaceRadiusToDisplay ) {
 
-					pos = convertPosition( place[ 2 ], - place[ 3 ], placardYPosition )
+					pos = convertPosition( place[ 2 ], - place[ 3 ], placardYPosition ); // parse float??
 
 					drawSprite( place[ 0 ], placardSize, 120, pos.x, pos.y, pos.z );
 
